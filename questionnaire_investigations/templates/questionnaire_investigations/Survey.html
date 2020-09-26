@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+    <p>请填写调查问卷</p>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">1</span>
+    </div>
+
+    <input type="range" name="pizza" min="-2" max="2" step="1">
+
+    <div class="input-group-append">
+        <span class="input-group-text">6</span>
+    </div>
+</div>
+     {% formfield  player.age %}
+     {% formfield player.sex %}
+ {% formfield player.race %}
+ {% formfield player.economic %}
+ {% formfield player.highest %}
+ {% formfield player.communist %}
+ {% formfield player.ganbu %}
+ {% formfield player.father %}
+ {% formfield player.mother %}
+ {% formfield player.aid %}
+ {% formfield player.work %}
+ {% formfield player.experience %}
+{% formfield player.studentstatus %}
+{% formfield player.citizen %}{% formfield player.hhinc %}
+
+
+
+
+     {% next_button %}
+{% endblock %}
+

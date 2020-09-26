@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.name %}
+    {% formfield player.gender %}
+    {% formfield player.age %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    欢迎参加本次测试
+{% endblock %}
+{% block content %}
+
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+    <div id="root">
+        <test></test>
+    </div>
+    <template id="table">
+        <div>
+            <el-table
+                    :data="tableData"
+                    stripe
+                    style="width: 100%">
+                <el-table-column
+                        prop="date"
+                        label="决策情境"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="A"
+                        width="400">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="B"
+                        width='220'>
+                </el-table-column>
+
+                <el-table-column
+                prop="address"
+                label="你的选择是">
+                    <template slot-scope="scope">
+                      {% formfield player.q1 %}
+                    </template>
+                </el-table-column>
+              
+            </el-table>
+        </div>
+    </template>
+    <script>
+        const table = Vue.extend(
+            {
+                template: "#table",
+                data() {
+                    return {
+                        tableData: [{
+                            date: '1',
+                            name: '{{ same_question }}',
+                            address: '{{ q_list.0 }}'
+                        },{
+                            date: '2',
+                            name: '{{ same_question }}',
+                            address: '{{ q_list.1 }}'
+                        },{
+                            date: '3',
+                            name: '{{ same_question }}',
+                            address: '{{ q_list.2 }}'
+                        },{
+                            date: '4',
+                            name: '{{ same_question }}',
+                            address: '{{ q_list.3 }}'
+                        },{
+                            date: '5',
+                            name: '{{ same_question }}',
+                            address: '{{ q_list.4 }}'
+                        },]
+                    }
+                }
+            }
+        );
+
+        const app = new Vue({
+            el: "#root",
+            components: {
+                'test': table
+            }
+        })
+    </script>
+
+
+
+{#    {% formfield player.q3 %}#}
+{#    {% formfield player.q4 %}#}
+{#    {% formfield player.q5 %}#}
+{#    {% formfield player.q6 %}#}
+{#    {% formfield player.q7 %}#}
+{#    {% formfield player.q8 %}#}
+{#    {% formfield player.q9 %}#}
+{#    {% formfield player.q10 %}#}
+
+    {% next_button %}
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    {% if player.id_in_group == 3 %}
+        <p>
+            <span>您给B1公司投资了:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>您给B2公司投资了:</span>{{ group.sent_amount_b2 }}. <br>
+            <span>B1返回给你:</span>{{ group.sent_back_amount_b1 }}.<br>
+            <span>B2返回给你:</span>{{ group.sent_back_amount_b2 }}.
+        </p>
+    {% elif player.id_in_group == 1 %}
+         <p>
+
+            <span>A给你们公司投资了:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>A给B2公司投资了:</span>{{ group.sent_amount_b2 }}. <br>
+            <span>您返回给A:</span>{{ group.sent_back_amount_b1 }}.<br>
+            <span>B2返回给A:</span>{{ group.sent_back_amount_b2 }}.
+
+        </p>
+    {% elif player.id_in_group == 2 %}
+        <p>
+            <span>A给B1投资了:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>A给你们公司投资了:</span>{{ group.sent_amount_b2 }}. <br>
+            <span>B1返回给A:</span>{{ group.sent_back_amount_b1 }}.<br>
+            <span>你返回给A:</span>{{ group.sent_back_amount_b2 }}.
+
+
+        </p>
+    {% endif %}
+
+    <p>
+        Therefore, your total payoff is {{ player.payoff }}.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+

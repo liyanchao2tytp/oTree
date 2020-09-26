@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+    <p>请填写调查问卷</p>
+     {% formfield  player.leavedoor %}
+     {% formfield player.loanstrange %}
+     {% formfield  player.loanmoney %}
+     {% formfield player.victim %}
+     {% next_button %}
+{% endblock %}
