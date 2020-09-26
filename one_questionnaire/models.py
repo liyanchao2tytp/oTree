@@ -32,10 +32,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    name = models.StringField(label='请输入你的姓名')
-    age = models.IntegerField(label='请输入你的年龄')
-    gender = models.IntegerField(label='请输入你的性别', choices=[[1, '男'], [2, '女']])
-
     constants = Constants()
     answer = constants.answer
 

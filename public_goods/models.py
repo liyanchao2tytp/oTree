@@ -16,7 +16,7 @@ This is a one-period public goods game with 3 players.
 
 class Constants(BaseConstants):
     name_in_url = 'public_goods'
-    players_per_group = 18
+    players_per_group = 6
 
     # 设置两次实验
     num_rounds = 2

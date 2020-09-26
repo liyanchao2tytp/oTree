@@ -1,11 +1,12 @@
 from os import environ
 
+
 SESSION_CONFIGS = [
     dict(
        name='Test',
        display_name="Test",
-       num_demo_participants=18,
-       app_sequence=['public_goods','my_trust','questionnaire_investigations']
+       num_demo_participants=6,
+       app_sequence=['one_questionnaire','public_goods','my_trust','questionnaire_investigations']
     ),
 ]
 

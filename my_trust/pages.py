@@ -64,7 +64,7 @@ class B1_Ivest(Page):
             return False
     def vars_for_template(self):
         return dict(
-            tripled_amount=self.group.sent_amount_b1 * Constants.multiplication_factor
+            tripled_amount=self.group.sent_amount_b1 * Constants.multiplication_factor_b1
         )
 
 class B2_Ivest(Page):
@@ -77,7 +77,7 @@ class B2_Ivest(Page):
             return False
     def vars_for_template(self):
         return dict(
-            tripled_amount=self.group.sent_amount_b2 * Constants.multiplication_factor
+            tripled_amount=self.group.sent_amount_b2 * Constants.multiplication_factor_b2
         )
 class Waiter(WaitPage):
     wait_for_all_groups = True

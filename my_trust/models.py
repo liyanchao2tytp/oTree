@@ -18,12 +18,13 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'my_trust'
-    players_per_group = 18
-    num_rounds = 1
+    players_per_group = 6
+    num_rounds = 3
 
     endowment = c(100)
 
-    multiplication_factor = 3
+    multiplication_factor_b1 = 3
+    multiplication_factor_b2 = 5
 
 
 class Subsession(BaseSubsession):
@@ -53,12 +54,15 @@ class Subsession(BaseSubsession):
         print(id_order_player)
         print(id_order_player[0][0])
         new_structure = [
-            [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-            [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-            [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-            [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-            [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-            [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+            # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+            # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
+            # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+            # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+            # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+            # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+
+            [id_order_player[0][0], id_order_player[4][0], id_order_player[2][0]],
+            [id_order_player[1][0], id_order_player[5][0], id_order_player[3][0]],
 
         ]
         matrix = self.set_group_matrix(new_structure)
@@ -70,10 +74,11 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount_b1 = models.CurrencyField(
-        label='你要发给公司B1多少'
+        label='你要发给公司B1多少',
     )
     sent_amount_b2 = models.CurrencyField(
-        label='你要发给公司B2多少'
+        label='你要发给公司B2多少',
+
     )
 
     sent_back_amount_b1 = models.CurrencyField(
@@ -86,14 +91,14 @@ class Group(BaseGroup):
     def sent_back_amount_b1_choices(self):
         return currency_range(
             c(0),
-            self.sent_amount_b1 * Constants.multiplication_factor,
+            self.sent_amount_b1 * Constants.multiplication_factor_b1,
             c(1),
         )
 
     def sent_back_amount_b2_choices(self):
         return currency_range(
             c(0),
-            self.sent_amount_b2 * Constants.multiplication_factor,
+            self.sent_amount_b2 * Constants.multiplication_factor_b2,
             c(1),
         )
 
@@ -102,8 +107,8 @@ class Group(BaseGroup):
         B1 = self.get_player_by_id(2)
         B2 = self.get_player_by_id(3)
         A.payoff = Constants.endowment - self.sent_amount_b1 - self.sent_amount_b2 + self.sent_back_amount_b1 + self.sent_back_amount_b2
-        B1.payoff = self.sent_amount_b1 * Constants.multiplication_factor - self.sent_back_amount_b1
-        B2.payoff = self.sent_amount_b2 * Constants.multiplication_factor - self.sent_back_amount_b2
+        B1.payoff = self.sent_amount_b1 * Constants.multiplication_factor_b1 - self.sent_back_amount_b1
+        B2.payoff = self.sent_amount_b2 * Constants.multiplication_factor_b2 - self.sent_back_amount_b2
 
 
 class Player(BasePlayer):

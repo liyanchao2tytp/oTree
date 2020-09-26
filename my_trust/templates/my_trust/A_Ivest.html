@@ -3,7 +3,7 @@
 
 {% block title %}
 
-   投资
+    投资
 
 {% endblock %}
 
@@ -15,172 +15,183 @@
 
 {% block content %}
     <style>
-    /* 设置根属性，利于其他需要设定大小的属性使用rem */
-html {
-    font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;
-    font-size: 62.5%;
-}
-/* body的margin自带8px，因此需要清除 */
-body {
-    margin: 0;
-}
-/* 很少需要全部属性都设置 */
-* {
-    /*该属性让一个盒子大小，符合人的思维。
-    width = padding + border + content;
-    content = line-height * line-num;*/
-    box-sizing: border-box;
-    margin:0;
-    padding: 0;
-}
-/* 去除连接标签下划线和默认颜色 */
-a {
-    text-decoration: none;
-    color: #333;
-}
+        /* 设置根属性，利于其他需要设定大小的属性使用rem */
+        html {
+            font-family: "Hiragino Sans GB", "Microsoft Yahei", arial, \5b8b\4f53, "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+            font-size: 62.5%;
+        }
 
-textarea,
-input,
-button {
-    outline: none;
-}
-/* 图片自适应 */
-img {
-    width: 100%;
-}
-/* 清除浮动 */
-.clear::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-/* 以下为为老旧版本浏览器做的适配 */
-header, section, footer, aside, nav, article, figure
-{
-    display: block;
-}
+        /* body的margin自带8px，因此需要清除 */
+        body {
+            margin: 0;
+        }
+
+        /* 很少需要全部属性都设置 */
+        * {
+            /*该属性让一个盒子大小，符合人的思维。
+            width = padding + border + content;
+            content = line-height * line-num;*/
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 去除连接标签下划线和默认颜色 */
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        textarea,
+        input,
+        button {
+            outline: none;
+        }
+
+        /* 图片自适应 */
+        img {
+            width: 100%;
+        }
+
+        /* 清除浮动 */
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* 以下为为老旧版本浏览器做的适配 */
+        header, section, footer, aside, nav, article, figure {
+            display: block;
+        }
 
     </style>
 
     <style>
-tr,td{
-    /* border: 0.1rem solid black; */
-    margin: 0rem;
-    width: 0.2rem;
-}
+        tr, td {
+            /* border: 0.1rem solid black; */
+            margin: 0rem;
+            width: 0.2rem;
+        }
 
-table {
-    width: 62.5rem;
-    min-height: 50rem;
-    margin:0 0 0 0rem;
-    /* border: 0.1rem solid black; */
-}
-div{
-    margin: 1.25rem 1.25rem 1.25rem 1.25rem ;
-}
+        table {
+            width: 62.5rem;
+            min-height: 50rem;
+            margin: 0 0 0 0rem;
+            /* border: 0.1rem solid black; */
+        }
 
- .introduce{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
-}
-.introduce p{
-    font-size: 13px;
-    padding: 10px 10px;
-}
-#app{
-    width:845px;
-}
-.chan{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
-}
-.button{
-    float:right;
-    margin-top: 18rem;
-}
-</style>
+        div {
+            margin: 1.25rem 1.25rem 1.25rem 1.25rem;
+        }
 
-<script src="//unpkg.com/vue/dist/vue.js"></script>
-<script src="//unpkg.com/element-ui@2.13.2/lib/index.js"></script>
-   <div >
+        .introduce {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+        }
+
+        .introduce p {
+            font-size: 13px;
+            padding: 10px 10px;
+        }
+
+        #app {
+            width: 845px;
+        }
+
+        .chan {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+        }
+
+        .button {
+            float: right;
+            margin-top: 18rem;
+        }
+    </style>
+
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+    <div>
 
         <div class="introduce">
-           <P> 亲爱的参与者,
-            <br/>
-            &nbsp; &nbsp; &nbsp; &nbsp;您将面临一个新的决策情景。为了赚取更多的报酬，您仔细阅读下面的说明是很重要的。<br />
-            &nbsp; &nbsp; &nbsp; &nbsp;这个决策过程将花费您1个小时的时间。在游戏中，您可以赚钱，而您的总报酬取决于您的决定和其他参与者的决定。
-            决策结束后，您将获得单独和匿名的现金奖励。在决策期后你所获得的人民币将按照以下汇率兑换：10亿元=1.00人民币，
-            请您在阅读说明和做决定时慢慢来。您不能通过快速决策来影响整个过程的持续时间。另外，记住您的支出取决于您的选择。
-            在开始游戏之前，会给你一些测试题，以帮助您检查您是否理解说明。每正确回答一个测试问题，您将得到一个额外的人民币。
-            在决策过程中，任何时候都不能透露参与者的身份和您的报酬。您对研究人员和其他参与者的匿名性是有保证的。
-            如果您在阅读过程中有任何问题，请举手。一个助手会过来私下回答您的问题。请不要与其他参与者交流，请安静提问。
-            在决策开始后，不得再问任何问题。<br />
+            <P> 亲爱的参与者,
+                <br/>
+                &nbsp; &nbsp; &nbsp; &nbsp;您将面临一个新的决策情景。为了赚取更多的报酬，您仔细阅读下面的说明是很重要的。<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp;这个决策过程将花费您1个小时的时间。在游戏中，您可以赚钱，而您的总报酬取决于您的决定和其他参与者的决定。
+                决策结束后，您将获得单独和匿名的现金奖励。在决策期后你所获得的人民币将按照以下汇率兑换：10亿元=1.00人民币，
+                请您在阅读说明和做决定时慢慢来。您不能通过快速决策来影响整个过程的持续时间。另外，记住您的支出取决于您的选择。
+                在开始游戏之前，会给你一些测试题，以帮助您检查您是否理解说明。每正确回答一个测试问题，您将得到一个额外的人民币。
+                在决策过程中，任何时候都不能透露参与者的身份和您的报酬。您对研究人员和其他参与者的匿名性是有保证的。
+                如果您在阅读过程中有任何问题，请举手。一个助手会过来私下回答您的问题。请不要与其他参与者交流，请安静提问。
+                在决策开始后，不得再问任何问题。<br/>
 
-            &nbsp; &nbsp; &nbsp; &nbsp;决策开始前，系统会随机分配给每位决策者不同的身份（A身份、B1身份、B2身份）具体身份根据系统随机分配，
-            一期决策由两位决策者共同完成，每位决策者决策的内容不同，即将面临投资决策和回报决策，具体决策情景在后面一一呈现。
-           </P>
+                &nbsp; &nbsp; &nbsp; &nbsp;决策开始前，系统会随机分配给每位决策者不同的身份（A身份、B1身份、B2身份）具体身份根据系统随机分配，
+                一期决策由两位决策者共同完成，每位决策者决策的内容不同，即将面临投资决策和回报决策，具体决策情景在后面一一呈现。
+            </P>
         </div>
 
         <div style="float: right;  clear:both;">
-                <div id="app">
+            <div id="app">
                 <template>
                     <el-alert
-                      title="注意："
-                      type="warning"
-                      description="尊敬的客户，本理财产品有投资风险，不保证本金和收益，可能会因市场变动而导致本金和收益全部损失,您应充分认识投资风险，谨慎投资。"
-                      show-icon>
+                            title="注意："
+                            type="warning"
+                            description="尊敬的客户，本理财产品有投资风险，不保证本金和收益，可能会因市场变动而导致本金和收益全部损失,您应充分认识投资风险，谨慎投资。"
+                            show-icon>
                     </el-alert>
                 </template>
-               </div>
+            </div>
 
 
-          <div class="chan">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+            <div class="chan">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
-            <table cellspacing="1" class="table table-bordered table-hover" >
-                <tr>
-                    <td colspan="2" align="center" >产品概述</td>
-                </tr>
-                <tr>
-                    <td>理财币种</td>
-                    <td>人民币</td>
-                </tr>
-                <tr>
-                    <td>理财期限</td>
-                    <td>一期代表十年</td>
-                </tr>
-                <tr>
-                    <td>申购时间</td>
-                    <td>每年年初可以提出申请，客户自行将资金投入投资账户，提交申请后，客户在本期不得取消投资。</td>
-                </tr>
-                <tr>
-                    <td>认购/申购起点金额</td>
-                    <td>认购申购金额为整数即可，不可追加投资</td>
-                </tr>
-                <tr>
-                    <td>收益计算的基础</td>
-                    <td>根据选择的理财项目确定，具体计算过程参照下文计算示例</td>
-                </tr>
-                <tr>
-                    <td>投资公司</td>
-                    <td>B1公司或B2公司 <strong>注意：每期只能选择一种进行投资</strong></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">本金及理财收益</td>
-                </tr>
-                <tr>
-                    <td>计算示例</td>
-                    <td><strong>A公司具体计算如下：</strong>初始资金为100亿元，投资0元，回报为0元，最后资金为100亿；投资20亿元，回报的金额范围W=【0亿元-60亿元】，最后资金为100-20+W；投资100亿元，回报的金额范围W=【0亿元-300亿元】，最后的资金为100-100+W；其他情况依次类推<br />
-                        <strong>B公司具体计算过程如下：</strong>初始资金为100亿元，投资0元，回报为0元，最后资金为100亿；投资20亿元，回报的金额范围W=【0亿元-100亿元】，最后资金为100-20+W；投资100亿元，回报的金额范围W=【0亿元-500亿元】，最后的资金为100-100+W；其他情况依次类推
+                <table cellspacing="1" class="table table-bordered table-hover">
+                    <tr>
+                        <td colspan="2" align="center">产品概述</td>
+                    </tr>
+                    <tr>
+                        <td>理财币种</td>
+                        <td>人民币</td>
+                    </tr>
+                    <tr>
+                        <td>理财期限</td>
+                        <td>一期代表十年</td>
+                    </tr>
+                    <tr>
+                        <td>申购时间</td>
+                        <td>每年年初可以提出申请，客户自行将资金投入投资账户，提交申请后，客户在本期不得取消投资。</td>
+                    </tr>
+                    <tr>
+                        <td>认购/申购起点金额</td>
+                        <td>认购申购金额为整数即可，不可追加投资</td>
+                    </tr>
+                    <tr>
+                        <td>收益计算的基础</td>
+                        <td>根据选择的理财项目确定，具体计算过程参照下文计算示例</td>
+                    </tr>
+                    <tr>
+                        <td>投资公司</td>
+                        <td>B1公司或B2公司 <strong>注意：每期只能选择一种进行投资</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">本金及理财收益</td>
+                    </tr>
+                    <tr>
+                        <td>计算示例</td>
+                        <td><strong>A公司具体计算如下：</strong>初始资金为100亿元，投资0元，回报为0元，最后资金为100亿；投资20亿元，回报的金额范围W=【0亿元-60亿元】，最后资金为100-20+W；投资100亿元，回报的金额范围W=【0亿元-300亿元】，最后的资金为100-100+W；其他情况依次类推<br/>
+                            <strong>B公司具体计算过程如下：</strong>初始资金为100亿元，投资0元，回报为0元，最后资金为100亿；投资20亿元，回报的金额范围W=【0亿元-100亿元】，最后资金为100-20+W；投资100亿元，回报的金额范围W=【0亿元-500亿元】，最后的资金为100-100+W；其他情况依次类推
                         </td>
-                </tr>
-                <tr>
-                    <td>风险示例</td>
-                    <td>在交易对手未能按时足额支付价款情况下，本理财公司将根据交易对手实际支付价款的情况计算理财收益，如果到期交易对手发生违约或投资标的出现损失，则本理财公司的本金及收益可能全部损失。</td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td>风险示例</td>
+                        <td>在交易对手未能按时足额支付价款情况下，本理财公司将根据交易对手实际支付价款的情况计算理财收益，如果到期交易对手发生违约或投资标的出现损失，则本理财公司的本金及收益可能全部损失。
+                        </td>
+                    </tr>
 
-            </table>
-           </div>
+                </table>
+            </div>
 
 
             <div class="list-group chan">
@@ -190,52 +201,82 @@ div{
                 2、投资B1、B2公司的可能获得收益不同，
                 B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
                 将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。</span> -->
-                    <a class="list-group-item list-group-item-action disabled" >
-                        根据公司对将要投资的两家企业的市场情况分析得到相关信息如下：
-                    </a>
-                    <a class="list-group-item list-group-item-action">
-                        1、A、B公司均2016年成立，两家公司运营状况良好，B1、B2两家企业在上一期公共池游戏中的投资平均额度将在游戏屏幕中显示，请注意查看。
-                    </a>
-                    <a class="list-group-item list-group-item-action ">
-                        2、投资B1、B2公司的可能获得收益不同，B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
-                        将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。
-                    </a>
+                <a class="list-group-item list-group-item-action disabled">
+                    根据公司对将要投资的两家企业的市场情况分析得到相关信息如下：
+                </a>
+                <a class="list-group-item list-group-item-action">
+                    1、A、B公司均2016年成立，两家公司运营状况良好，B1、B2两家企业在上一期公共池游戏中的投资平均额度将在游戏屏幕中显示，请注意查看。
+                </a>
+                <a class="list-group-item list-group-item-action ">
+                    2、投资B1、B2公司的可能获得收益不同，B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
+                    将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。
+                </a>
             </div>
         </div>
 
 
-    <div style=" text-align: center;" class="chan">
-        <div style="text-align: left;">
+        <div style=" text-align: center;" class="chan">
+            <div style="text-align: left;">
                 <div>
-					<span>B1在公共游戏中投入为</span>
-					<span style="margin-left: 5px;">{{ b1_in_public }}</span>
-				</div>
-				<div>
-					<span>B2在公共游戏中投入为</span>
-					<span style="margin: 0 0 0 5px;">{{ b2_in_public }}</span>
-				</div>
+                    <span>B1在公共游戏中投入为</span>
+                    <span style="margin-left: 5px;">{{ b1_in_public }}</span>
+                </div>
+                <div>
+                    <span>B2在公共游戏中投入为</span>
+                    <span style="margin: 0 0 0 5px;">{{ b2_in_public }}</span>
+                </div>
                 <span>本轮您准备投资给A（或B）公司</span>
                 <div class="button">
-                       {% next_button %}
-                    </div>
+                    {% next_button %}
+                </div>
                 <div>
-                    {% formfield group.sent_amount_b1 %}
-                    {% formfield group.sent_amount_b2 %}
+                    <div id="b1" style="display: none">
+                        {% formfield group.sent_amount_b1 %}
+                    </div>
+                    <div id="b2" style="display: none">
+                        {% formfield group.sent_amount_b2 %}
+                    </div>
 
                 </div>
 
-    </div>
-</div>
+            </div>
+        </div>
 
     </div>
 
 
-<style>
-    @import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
-</style>
+    <style>
+        @import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+    </style>
 
     <script>
-        new Vue().$mount('#app')
+
+        let b1 = document.getElementById("b1")
+
+        let b2 = document.getElementById("b2")
+
+        let b1_default_value = document.getElementById('id_sent_amount_b1')
+        let b2_default_value = document.getElementById('id_sent_amount_b2')
+
+
+        new Vue({
+            el: '#app',
+            created() {
+                this.$confirm('您要投资给, 是否继续?', '提示', {
+                    confirmButtonText: 'B1',
+                    cancelButtonText: 'B2',
+                    type: 'warning'
+                }).then(() => {
+                    b1.style.display="block"
+                    b2_default_value.value = '0'
+                }).catch(() => {
+
+                    b2.style.display="block"
+                    b1_default_value.value = '0'
+
+                });
+            }
+        })
     </script>
 {% endblock %}
 

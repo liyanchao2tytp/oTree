@@ -4,8 +4,7 @@ from .models import Constants, Player
 
 
 class MyPage(Page):
-    form_model = 'player'
-    form_fields = ['name', 'gender', 'age']
+   pass
 
 class ResultsWaitPage(WaitPage):
     pass
@@ -26,4 +25,4 @@ class Survey(Page):
             same_question='50%的概率获得20元，50%的概率获得0'
         )
 
-page_sequence = [MyPage, Survey, Results]
+page_sequence = [MyPage,Survey, Results]
