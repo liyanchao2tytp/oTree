@@ -18,8 +18,10 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'my_trust'
-    players_per_group = 6
-    num_rounds = 3
+    # players_per_group = 6
+    players_per_group = 3
+    # num_rounds = 3
+    num_rounds = 1
 
     endowment = c(100)
 
@@ -88,14 +90,16 @@ class Subsession(BaseSubsession):
             p.payoff_public = payoff_all_list[p.participant.id_in_session]
             p.payoff_avg_public = payoff_avg[p.participant.id_in_session]
 
+        # new_structure = [
+        #      [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+        #      [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
+        #      [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+        #      [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+        #      [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+        #      [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+        # ]
         new_structure = [
-            [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-            [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-             [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-             [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-             [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-             [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-
+             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]], 
         ]
         matrix = self.set_group_matrix(new_structure)
 

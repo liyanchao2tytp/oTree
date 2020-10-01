@@ -4,8 +4,8 @@ SESSION_CONFIGS = [
     dict(
         name='Test',
         display_name="Test",
-        num_demo_participants=18,
-        app_sequence=['one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','questionnaire_investigations']
+        num_demo_participants=3,
+        app_sequence=['pre_public_goods', 'public_goods', 'my_trust','questionnaire_investigations']
         #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust',
     ),
 ]
@@ -23,10 +23,6 @@ SESSION_CONFIG_DEFAULTS = dict(
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
-if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}: 
-      DEBUG = True
-else:  
-      DEBUG = False
 
 #DEBUG = False
 
