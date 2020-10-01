@@ -1,12 +1,12 @@
 from os import environ
 
-
 SESSION_CONFIGS = [
     dict(
-       name='Test',
-       display_name="Test",
-       num_demo_participants=6,
-       app_sequence=['one_questionnaire','public_goods','my_trust','questionnaire_investigations']
+        name='Test',
+        display_name="Test",
+        num_demo_participants=18,
+        app_sequence=['one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','questionnaire_investigations']
+        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust',
     ),
 ]
 
@@ -22,6 +22,13 @@ SESSION_CONFIG_DEFAULTS = dict(
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
+
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}: 
+      DEBUG = True
+else:  
+      DEBUG = False
+
+#DEBUG = False
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'

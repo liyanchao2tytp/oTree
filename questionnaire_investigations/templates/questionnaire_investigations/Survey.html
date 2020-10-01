@@ -11,13 +11,28 @@
     <div class="input-group-prepend">
         <span class="input-group-text">1</span>
     </div>
-
+   
     <input type="range" name="pizza" min="-2" max="2" step="1">
-
-    <div class="input-group-append">
+    
+    
+    <div style="position: relative;" class="input-group-append">
+        <div style="position: absolute; top: 84px; left: -260px;"> 
+            <span>1：不在意</span>
+        </div>
+        <div style="width: 5000px; position: absolute; top: 84px; left: 280px;">
+            <span>5:很在意</span>
+        </div>
+        <div style="position: absolute; top: 174px; left: -260px;"> 
+            <span>1：不理解</span>
+        </div>
+        <div style="width: 5000px; position: absolute; top: 174px; left: 280px;">
+            <span>5:很理解</span>
+        </div>
         <span class="input-group-text">6</span>
     </div>
 </div>
+       {% formfield  player.hoesty1 %}
+    {% formfield  player.hoesty2 %}
      {% formfield  player.age %}
      {% formfield player.sex %}
  {% formfield player.race %}
