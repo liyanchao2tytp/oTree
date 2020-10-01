@@ -1,8 +1,9 @@
 {% extends "global/Page.html" %} 
 {% load otree %} 
 {% block title %} 
-  Contribute
+    Contribute
 {% endblock %} 
+
 {% block content %}
 
 <link
@@ -83,7 +84,6 @@
 
         {% formfield player.contribution label=""%} 
         {% next_button %} 
-        
         {% include Constants.instructions_template %}
       </el-tab-pane>
     </el-tabs>
