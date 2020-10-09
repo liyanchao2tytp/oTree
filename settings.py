@@ -1,12 +1,12 @@
 from os import environ
 
-
 SESSION_CONFIGS = [
     dict(
-       name='Test',
-       display_name="Test",
-       num_demo_participants=6,
-       app_sequence=['one_questionnaire','public_goods','my_trust','questionnaire_investigations']
+        name='Test',
+        display_name="Test",
+        num_demo_participants=3,
+        app_sequence=['public_goods', 'my_trust','questionnaire_investigations']
+        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
 ]
 
@@ -23,11 +23,13 @@ SESSION_CONFIG_DEFAULTS = dict(
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
+
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = []
+
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable

@@ -43,7 +43,9 @@ class Results(Page):
 
         #self.player.player_pay = self.player.contribution+self.player.player_pay
         return dict(total_earnings=self.group.total_contribution * Constants.multiplier)
+class Waiter2(WaitPage):
+    wait_for_all_groups = True
+    after_all_players_arrive = "get_dmeo"
 
-
-page_sequence = [Contribute, ResultsWaitPage, Results]
+page_sequence = [Contribute, ResultsWaitPage, Results,Waiter2]
 # Introduction,
