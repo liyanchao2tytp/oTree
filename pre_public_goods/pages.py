@@ -1,7 +1,7 @@
-from ._builtin import Page, WaitPage
 from otree.api import Currency as c, currency_range
+from ._builtin import Page, WaitPage
 from .models import Constants
-from .models import Player
+
 
 class Introduction(Page):
     """Description of the game: How to play and returns expected"""
@@ -43,9 +43,6 @@ class Results(Page):
 
         #self.player.player_pay = self.player.contribution+self.player.player_pay
         return dict(total_earnings=self.group.total_contribution * Constants.multiplier)
-class Waiter2(WaitPage):
-    wait_for_all_groups = True
-    after_all_players_arrive = "get_dmeo"
 
-page_sequence = [Contribute, ResultsWaitPage, Results,Waiter2]
-# Introduction,
+
+page_sequence = [Contribute, ResultsWaitPage, Results]
