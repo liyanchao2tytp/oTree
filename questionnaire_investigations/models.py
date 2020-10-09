@@ -49,6 +49,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def sub_session(self):
+<<<<<<< HEAD
         player_four = self.session.vars["player_off"]
         for g in self.get_groups():
             for p in self.get_players():
@@ -56,6 +57,15 @@ class Subsession(BaseSubsession):
                     if (p.participant_id == m):
                         p.payoff_demo = player_four[m]
                         p.payoff = p.payoff_demo
+=======
+        player_four=self.session.vars["player_off"]
+        for g in self.get_groups():
+            for p in self.get_players():
+                for m in player_four.keys():
+                    if(p.participant_id==m):
+                        p.payoff_demo=player_four[m]
+                        p.payoff=p.payoff_demo
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
 
     pass
 
@@ -68,11 +78,16 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     answer_age = Constants.answer_age
+<<<<<<< HEAD
     answer_hoesty1 = Constants.answer_honetr
 
     hoesty1 = models.IntegerField(label="请问您在游戏过程中对游戏币的数量（或者资金的多少）的在意程度是(1表示完全不在意，7表示完全在意，数字越大，代表符合程度越高）", choices=answer_hoesty1,
                                 )
     hoesty2 = models.IntegerField(label="请问您个人认为自己对游戏过程的理解程度是(1表示完全不理解，7表示完全理解，数字越大，代表符合程度越高）", choices=answer_hoesty1, )
+=======
+    hoesty1 = models.IntegerField(label="请问您在游戏过程中对游戏币的数量（或者资金的多少）的在意程度是", widget=widgets.Slider, min=0, max=10)
+    hoesty2 = models.IntegerField(label="请问您个人认为自己对游戏过程的理解程度是", widget=widgets.Slider, min=0, max=10)
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
     age = models.StringField(label="年龄", choices=answer_age)
     answer_sex = Constants.answer_sex
     sex = models.IntegerField(label="性别", choices=answer_sex, widget=widgets.RadioSelectHorizontal)
@@ -80,7 +95,11 @@ class Player(BasePlayer):
     race = models.IntegerField(label="民族", choices=answer_race, widget=widgets.RadioSelectHorizontal)
     answer_economic = Constants.answer_economic
     economic = models.IntegerField(label="是否是经济类专业的学生", choices=answer_economic, widget=widgets.RadioSelectHorizontal)
+<<<<<<< HEAD
     highest = models.StringField(label="期望获得的最高教育", choices=[ '本科', '研究生','博士及以上'])
+=======
+    highest = models.StringField(label="期望获得的最高教育", choices=['小学', '初中', '高中', '大专', '本科', '研究生及以上'])
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
     answer_communist = Constants.answer_communist
     communist = models.IntegerField(label="实验对象是否是党员", choices=answer_communist, widget=widgets.RadioSelectHorizontal)
     answer_ganbu = Constants.answer_ganbu
@@ -101,7 +120,11 @@ class Player(BasePlayer):
     studentstatus = models.StringField(label="年级", choices=['2017', '2018', '2019', '2020'])
     answer_citizen = Constants.answer_communist
     citizen = models.IntegerField(label="来自农村还是城市", choices=answer_citizen, widget=widgets.RadioSelectHorizontal)
+<<<<<<< HEAD
     hhinc = models.StringField(label="年收入水平", choices=['不方便透露', '低于3万', '3万--8万', '8万--15万', '15万--30万','30万--100万','100万以上' ])
+=======
+    hhinc = models.StringField(label="年收入水平", choices=['不方便透露', '贫穷', '温饱', '小康', '富裕', ])
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
 
     answer_mosttrust = Constants.answer_mosttrust
     mosstrust = models.IntegerField(label="下面的说法你相对赞成哪种？1.一般而言，大部分人是值得信任的，2.一般而言，再和大多数打交道怎么谨慎也不为过",
@@ -114,6 +137,7 @@ class Player(BasePlayer):
                                    widget=widgets.RadioSelectHorizontal)
     trustindex = models.IntegerField(label="前面3个变量的加总标准化")
 
+<<<<<<< HEAD
     strangers = models.IntegerField(label="你会相信陌生人的言行吗(1表示完全不相信，7表示完全相信，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
     trustworthy = models.IntegerField(label="你觉得自己是应该可以值得信赖的人吗(1表示完全不值得信赖，7表示完全值得信赖，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
     hoesty = models.IntegerField(label="你是否是一个诚实的人(1表示完全不诚实，7表示完全诚实，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
@@ -121,6 +145,15 @@ class Player(BasePlayer):
     leavedoor = models.IntegerField(label="你是否离开宿舍时经常不锁门(1表示永远不锁门，7表示天天都锁门，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
     loanstrange = models.IntegerField(label="你是否经常借钱给陌生人(1表示不会借给陌生人，7表示有求必应，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
     loanmoney = models.IntegerField(label="你经常借钱给朋友或同学么？(1表示从来没有借过，7表示有求必应，数字越大，代表符合程度越高）", choices=answer_hoesty1,)
+=======
+    strangers = models.IntegerField(label="你会相信陌生人的言行吗", widget=widgets.Slider, min=1, max=6)
+    trustworthy = models.IntegerField(label="你举得自己是应该可以值得信赖的人吗", widget=widgets.Slider, min=1, max=6)
+    hoesty = models.IntegerField(label="你是否是一个诚实的人", widget=widgets.Slider, min=0, max=10)
+
+    leavedoor = models.IntegerField(label="你是否离开宿舍时经常不锁门", widget=widgets.Slider, min=1, max=5)
+    loanstrange = models.IntegerField(label="你是否经常借钱给陌生人", widget=widgets.Slider, min=1, max=5)
+    loanmoney = models.IntegerField(label="你经常借钱给朋友或同学么？", widget=widgets.Slider, min=1, max=5)
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
 
     behaviorindex = models.IntegerField(label="前面3个加总的标准化")
     answer_victim = Constants.answer_victim
@@ -133,3 +166,29 @@ class Player(BasePlayer):
     #   self.trustind=self.mosstrust+self.mostfair+self.mosthelp
     #   self.behaviorindex=self.leavedoor+self.loanstrange+self.loanmoney
     #
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4

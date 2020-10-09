@@ -5,8 +5,8 @@ SESSION_CONFIGS = [
         name='Test',
         display_name="Test",
         num_demo_participants=3,
-        app_sequence=['public_goods', 'my_trust','questionnaire_investigations']
-        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
+        app_sequence=['pre_public_goods', 'public_goods', 'my_trust','questionnaire_investigations']
+        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust',
     ),
 ]
 
@@ -24,6 +24,11 @@ SESSION_CONFIG_DEFAULTS = dict(
 LANGUAGE_CODE = 'en'
 
 
+<<<<<<< HEAD
+=======
+#DEBUG = False
+
+>>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
