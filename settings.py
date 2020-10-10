@@ -27,10 +27,6 @@ LANGUAGE_CODE = 'en'
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
-if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}: 
-      DEBUG = True
-else:  
-      DEBUG = False
 
 ROOMS = []
 

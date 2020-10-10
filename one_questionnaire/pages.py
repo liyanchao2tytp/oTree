@@ -19,10 +19,10 @@ class Survey(Page):
         list=[]
         q_list = []
         for i in range(10):
-            q_list.append('100%的概率的{}元'.format(i))
+            q_list.append('100%的概率的{}元'.format(400+(i*200)))
         return dict(
             q_list=q_list,
-            same_question='50%的概率获得20元，50%的概率获得0'
+            same_question='50%的概率获得2000元，50%的概率获得0'
         )
 
 page_sequence = [MyPage,Survey, Results]

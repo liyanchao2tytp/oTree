@@ -23,6 +23,7 @@
     <el-tabs v-model="index">
       <el-tab-pane label="游戏介绍" name="first">
         <p>
+          <span style="color: red; font-size: large;"> 提示：测试游戏已经结束，游戏正式开始。 </span><br>
           感谢您参与我们的游戏。在游戏中，我们对群体决策感兴趣。
           为了赚取更多的游戏币，您仔细阅读下面的说明是很重要的。
           在游戏中，您可以赚钱，而您的总回报取决于您的决定和其他参与者的决定。
@@ -91,6 +92,7 @@
 </template>
 
 <script>
+  alert('提示：测试游戏结束，马上开始正式游戏')
   const tab = Vue.extend({
     template: "#tab",
     data() {
