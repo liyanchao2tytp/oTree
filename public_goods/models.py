@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     instructions_template = 'public_goods/instructions.html'
 
     # """Amount allocated to each player"""
-    endowment = c(20)
+    endowment = c(100)
     multiplier = 0.4
 
 
