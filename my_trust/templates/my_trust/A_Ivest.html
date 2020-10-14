@@ -37,15 +37,37 @@
     <hr class="my-4" />
     <br />
 
-    <h4 style="float: left">B1在公共游戏中投入为:&nbsp;&nbsp;</h4>
+    <div class="list-group chan" style="color: red">
+      <!-- <span>根据公司对将要投资的两家企业的市场情况分析得到相关信息如下：<br />
+          1、A、B公司均2016年成立，两家公司运营状况良好，
+      B1、B2两家企业在上一期公共池游戏中的投资平均额度将在游戏屏幕中显示，请注意查看。<br >
+      2、投资B1、B2公司的可能获得收益不同，
+      B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
+      将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。</span> -->
+      <a class="list-group-item list-group-item-action disabled">
+        根据公司对将要投资的两家企业的市场情况分析得到相关信息如下：
+      </a>
+      <a class="list-group-item list-group-item-action">
+        1、B1、B2
+        公司均2016年成立，两家公司运营状况良好，B1、B2两家企业在上一期公共池游戏中的投资平均额度将在游戏屏幕中显示，请注意查看。
+      </a>
+      <a class="list-group-item list-group-item-action">
+        2、投资B1、B2公司的可能获得收益不同，B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
+        将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。
+      </a>
+    </div>
+    <br />
+    <h4 style="float: left">B1在公共游戏中的总投入为:&nbsp;&nbsp;</h4>
     <h4>{{ b1_in_public }}</h4>
 
-    <h4 style="clear: left; float: left">B2在公共游戏中投入为:&nbsp;&nbsp;</h4>
+    <h4 style="clear: left; float: left">
+      B2在公共游戏中的总投入为:&nbsp;&nbsp;
+    </h4>
     <h4 style="float: left">{{ b2_in_public }}</h4>
 
     <br />
     <br />
-{#    <span>本轮您准备投资给A（或B）公司</span>#}
+    {# <span>本轮您准备投资给A（或B）公司</span>#}
     <div class="button">{% next_button %}</div>
     <div>
       <div id="b1" style="display: none">
@@ -92,7 +114,29 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body"><h3>请选择您要投资的对象</h3></div>
+
+      <div class="modal-body">
+        <h3>请选择您要投资的对象</h3>
+        <br />
+        <h4 style="float: left">B1在公共游戏中的总投入为:&nbsp;&nbsp;</h4>
+        <h4>{{ b1_in_public }}</h4>
+
+        <h4 style="clear: left; float: left">
+          B2在公共游戏中的总投入为:&nbsp;&nbsp;
+        </h4>
+        <h4 style="float: left">{{ b2_in_public }}</h4>
+      </div>
+
+      <h4>根据公司对将要投资的两家企业的市场情况分析得到相关信息如下：</h4>
+      <h4>
+        1、B1、B2
+        公司均2016年成立，两家公司运营状况良好，B1、B2两家企业在上一期公共池游戏中的投资平均额度将在游戏屏幕中显示，请注意查看。
+      </h4>
+      <h4>
+        2、投资B1、B2公司的可能获得收益不同，B2公司可能获得收益是B1公司可能获得收益的5/3倍。具体的收益的计算以列示在公司的介绍中，现在请您根据自己的经验决定本公司
+        将现存的100亿元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。
+      </h4>
+
       <div class="modal-footer">
         <button
           type="button"
@@ -140,16 +184,29 @@
     b2_default_value.value = "0";
   }
 
-   handleB2 = () => {
+  handleB2 = () => {
     b2.style.display = "block";
     b1_default_value.value = "0";
-  }; 
+  };
 
   noneIvest = () => {
     b1_default_value.value = "0";
     b2_default_value.value = "0";
 
     $(".button").find("button").click();
+  };
+
+  // 设置角色A的投资 不能超过100
+  b1_default_value.onkeyup = () => {
+    if (b1_default_value.value > 100) {
+      b1_default_value.value = 100;
+    }
+  };
+  // 设置角色A的投资 不能超过100
+  b2_default_value.onkeyup = () => {
+    if (b2_default_value.value > 100) {
+      b2_default_value.value = 100;
+    }
   };
 </script>
 {% endblock %}
