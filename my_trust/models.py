@@ -108,6 +108,8 @@ class Group(BaseGroup):
     sent_back_amount_b2 = models.CurrencyField(
         label='你要返回给A多少'
     )
+    # 角色A 期待返回的金额
+    A_expect_back_point = models.CurrencyField(initial=0,label='你期待返回的金额是多少')
 
     def sent_back_amount_b1_choices(self):
         return currency_range(
@@ -142,6 +144,8 @@ class Player(BasePlayer):
     payoff_all_now = models.CurrencyField(initial=0)
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
+
+
     def role(self):
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
