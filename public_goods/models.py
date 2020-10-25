@@ -16,17 +16,15 @@ This is a one-period public goods game with 3 players.
 
 class Constants(BaseConstants):
     name_in_url = 'public_goods'
-    #players_per_group = 18
-    players_per_group = 3
+    players_per_group = 6
 
     # 设置两次实验
-    # num_rounds = 2
-    num_rounds = 1
+    num_rounds = 3
 
     instructions_template = 'public_goods/instructions.html'
 
     # """Amount allocated to each player"""
-    endowment = c(20)
+    endowment = c(100)
     multiplier = 0.4
 
 
@@ -104,6 +102,8 @@ class Group(BaseGroup):
             playes_id.append(p.id_in_group)
 
             p.payoff = (Constants.endowment - p.contribution) + self.individual_share
+            
+            p.player_payoff_now=p.payoff
             playes_payoff.append(p.payoff)
 
             p.player_pay = p.contribution
@@ -262,9 +262,11 @@ play_demo = []
 
 class Player(BasePlayer):
     contribution = models.CurrencyField(
+
         min=0, max=Constants.endowment, doc="""The amount contributed by the player"""
     )
     # 默认用户的初始值为0
+    player_payoff_now = models.CurrencyField(initial=0)
     player_pay = models.CurrencyField(initial=0)
     ##############################
     payoff_all = models.CurrencyField(initial=0)

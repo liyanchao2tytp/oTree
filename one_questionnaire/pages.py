@@ -7,7 +7,9 @@ class MyPage(Page):
    pass
 
 class ResultsWaitPage(WaitPage):
-    pass
+    title_text = "等待页面"
+    body_text = "请等待其他玩家结束"
+    
 
 class Results(Page):
     pass
@@ -19,10 +21,10 @@ class Survey(Page):
         list=[]
         q_list = []
         for i in range(10):
-            q_list.append('100%的概率的{}元'.format(i))
+            q_list.append('100%的概率获得{}元'.format(50+(i*10)))
         return dict(
             q_list=q_list,
-            same_question='50%的概率获得20元，50%的概率获得0'
+            same_question='50%的概率获得200元，50%的概率获得0元'
         )
 
-page_sequence = [MyPage,Survey, Results]
+page_sequence = [MyPage,Survey,Results]

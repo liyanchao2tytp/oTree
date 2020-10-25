@@ -8,6 +8,7 @@ class MyPage(Page):
 
 
 class ResultsWaitPage(WaitPage):
+    body_text = "请等待其他玩家结束"
     pass
 
 
@@ -58,8 +59,8 @@ class Results(Page):
 class ResultsWaitPage2(WaitPage):
     wait_for_all_groups = True
     after_all_players_arrive = 'sub_session'
-
-    body_text = "Waiting for other participants to contribute."
+    body_text = "请等待其他玩家结束"
+    #body_text = "Waiting for other participants to contribute."
 
     def vars_for_template(self):
         #self.player.player_pay=self.player.player_pay+self.player.contribution ResultsWaitPage2,

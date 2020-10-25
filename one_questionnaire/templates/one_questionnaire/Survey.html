@@ -4,11 +4,19 @@
 {% block title %}
 
 
-<p class="animate__animated animate__bounceInLeft">欢迎参加本次测试</p>
-    <!-- 欢迎参加本次测试 -->
+<p class="animate__animated animate__bounceInLeft">欢迎参加本次游戏</p> 
+    
+    <!-- 欢迎参加本次游戏 -->
     <div style="font-size:20px;">
-        <p class="animate__animated animate__bounceInLeft">您正在进行10个投资项目，每个项目都有两种投资方案，两种投资方案所产生的结果如下，请您在两种方案中选出您认为更好的方案。</p>
-        <p class="animate__animated animate__bounceInLeft">决策情境 A    B您的选择是</p>        
+        <p class="animate__animated animate__bounceInLeft">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp请认真观察以下10个投资场景，每个项目都有两种投资方案。
+            <strong>请您在两种方案中选出您认为最好的方案。</strong>
+          
+            <br>
+            
+        </p>
+        <p class="animate__animated animate__bounceInLeft">  &nbsp &nbsp &nbsp &nbsp请根据您的真实想法，做出您认为正确的选择：(在做完本次测试后，<span style="color: red;">请点击Next</span>按钮)  </p>    
+     
     </div>
 
 {% endblock %}
@@ -19,12 +27,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
 
-    <div id="root">
+   <div id="root">
         <test></test>
     </div>
     <template id="table">
@@ -154,10 +158,12 @@
 {#    {% formfield player.q8 %}#}
 {#    {% formfield player.q9 %}#}
 {#    {% formfield player.q10 %}#}
+ <h4><br>请<span style="color: red;">点击Next</span>按钮<br> </h4> 
 
 <br/>
 <div style="float:right">
     {% next_button %}
+
 </div>
 
 

@@ -18,14 +18,8 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'my_trust'
-<<<<<<< HEAD
     players_per_group = 3
-=======
-    # players_per_group = 6
-    players_per_group = 3
-    # num_rounds = 3
->>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
-    num_rounds = 1
+    num_rounds = 3
 
     endowment = c(100)
 
@@ -34,50 +28,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-<<<<<<< HEAD
 
-=======
-    # def do_my_shuffle(self):
-    #     print("测试能不能乖乖听话")
-    #     # 要是分组就要在subsession这个类里面，但是creating_session是在这里执行的。watir页面要想调用方法，就必须在group里面。
-    #     id_list1 = self.session.vars['to_trust_id']
-    #     id_order_player = self.session.vars['to_trust_player']
-    #     sub_player = self.session.vars['to_trust_id_before']
-    #     # for m, n in id_list, id_order_player:
-    #     #     sub_player[m] = n
-    #
-    #     # for m,id in
-    #
-    #     # 然后根据已经排序好的对象序列进行分组
-    #     print(id_order_player)
-    #     print(type(id_order_player))
-    #     print(id_order_player[0][0])
-    #     id_list = id_order_player
-    #     print("打印participant的id_in_session")
-    #     print(sub_player)
-    #     print(type(sub_player))
-    #     for p in self.get_players():
-    #         p.payoff_play=sub_player[p.participant.id_in_session]
-    #         print(p.payoff_play)
-    #         print(p.participant.id_in_session)
-    #     print(id_order_player)
-    #     print(id_order_player[0][0])
-    #     new_structure = [
-    #         # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-    #         # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-    #         # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-    #         # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-    #         # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-    #         # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-    #
-    #         [id_order_player[0][0], id_order_player[4][0], id_order_player[2][0]],
-    #         [id_order_player[1][0], id_order_player[5][0], id_order_player[3][0]],
-    #
-    #     ]
-    #     matrix = self.set_group_matrix(new_structure)
-    #
-    #     #print(id_list[166][1])
->>>>>>> f14b030de468739eadf8f54cc75387e8a25f61f4
     def do_my_shuffle(self):
 
         print("测试能不能乖乖听话")
@@ -87,31 +38,34 @@ class Subsession(BaseSubsession):
         sub_player = self.session.vars['to_trust_id_before']
         payoff_all_list = self.session.vars['to_trust_payoff_all']
         payoff_avg = self.session.vars['to_trust_payoff_avg']
+        print(sub_player)
         # for m, n in id_list, id_order_player:
         #     sub_player[m] = n
         # for m,id in
         # 然后根据已经排序好的对象序列进行分组
+        # for g in self.get_groups():
+
         id_list = id_order_player
         for p in self.get_players():
             p.payoff_play = sub_player[p.participant.id_in_session]
+
             ###################修改的值
             p.payoff_public = payoff_all_list[p.participant.id_in_session]
             p.payoff_avg_public = payoff_avg[p.participant.id_in_session]
 
-        # new_structure = [
-        #      [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-        #      [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-        #      [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-        #      [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-        #      [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-        #      [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-        # ]
         new_structure = [
-             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]], 
+            # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+            # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
+            # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+            # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+            # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+            # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+
         ]
         matrix = self.set_group_matrix(new_structure)
 
-        # print(id_order_player[1212][0])
+        #print(id_order_player[1212][0])
     def creating_session(self):
         matrix = self.get_group_matrix()
 
@@ -141,19 +95,23 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount_b1 = models.CurrencyField(
-        label='你要发给公司B1多少',
+        label='您要投资给B1企业多少资金',
     )
     sent_amount_b2 = models.CurrencyField(
-        label='你要发给公司B2多少',
+        label='您要投资给B2企业多少资金',
 
     )
 
     sent_back_amount_b1 = models.CurrencyField(
-        label='你要返回给A多少'
+        label='您要返还给A企业多少资金'
     )
     sent_back_amount_b2 = models.CurrencyField(
-        label='你要返回给A多少'
+        label='您要返还给A企业多少资金'
     )
+
+    # 角色A 期待返回的金额
+    A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
+
 
     def sent_back_amount_b1_choices(self):
         return currency_range(

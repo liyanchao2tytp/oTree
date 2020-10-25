@@ -1,0 +1,64 @@
+System check identified no issues (0 silenced).
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+测试是否会统一运行
+测试是否会统一运行
+/soft/real_otree3/__temp_migrations/__init__.py changed, reloading.
+INFO /soft/real_otree3/__temp_migrations/__init__.py changed, reloading.
+Database saved
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+CRITICAL Listen failure: Couldn't listen on 0:80: [Errno 98] Address already in use.
+/soft/real_otree3/__temp_migrations/__init__.py changed, reloading.
+INFO /soft/real_otree3/__temp_migrations/__init__.py changed, reloading.
+Database saved
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+CRITICAL Listen failure: Couldn't listen on 0:80: [Errno 98] Address already in use.
+/soft/real_otree3/my_trust/models.py changed, reloading.
+INFO /soft/real_otree3/my_trust/models.py changed, reloading.
+Database saved
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+/soft/real_otree3/my_trust/models.py changed, reloading.
+INFO /soft/real_otree3/my_trust/models.py changed, reloading.
+Database saved
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+CRITICAL Listen failure: Couldn't listen on 0:80: [Errno 98] Address already in use.
+/soft/real_otree3/my_trust/models.py changed, reloading.
+INFO /soft/real_otree3/my_trust/models.py changed, reloading.
+Database saved
+Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+Open your browser to http://0:80/
+To quit the server, press Control+C.
+CRITICAL Listen failure: Couldn't listen on 0:80: [Errno 98] Address already in use.

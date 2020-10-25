@@ -21,37 +21,30 @@
     <template>
      <el-row :gutter="10">
       <el-col :span='25'>
-          <el-card shadow="hover">    
-           亲爱的参与者,<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您将面临一个新的决策情景。为了赚取更多的报酬，您仔细阅读下面的说明是很重要的。
-          这个决策过程将花费您1个小时的时间。在游戏中，您可以赚钱，而您的总报酬取决于您的决定和其他参与者的决定。
-          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;决策结束后，您将获得单独和匿名的现金奖励。在决策期后你所获得的人民币将按照以下汇率兑换：10亿元=1.00人民币，
-          请您在阅读说明和做决定时慢慢来。您不能通过快速决策来影响整个过程的持续时间。另外，记住您的支出取决于您的选择。
-          在开始游戏之前，会给你一些测试题，以帮助您检查您是否理解说明。每正确回答一个测试问题，您将得到一个额外的人民币。
-          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在决策过程中，任何时候都不能透露参与者的身份和您的报酬。您对研究人员和其他参与者的匿名性是有保证的。
-          如果您在阅读过程中有任何问题，请举手。一个助手会过来私下回答您的问题。请不要与其他参与者交流，请安静提问。
-          在决策开始后，不得再问任何问题。<br />
-  
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;决策开始前，系统会随机分配给每位决策者不同的身份（A身份、B1身份、B2身份）具体身份根据系统随机分配，
-          一期决策由两位决策者共同完成，每位决策者决策的内容不同，即将面临投资决策和回报决策，具体决策情景在后面一一呈现。
+          <el-card shadow="hover">
+              <br /><strong>亲爱的参与者，您的角色为B1企业</strong>
+           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp请您仔细阅读A企业给您投资的资金，如果您没有收到投资，则本轮结束，请您选择返还数量为0，并点击<span style="color: red;">NEXT按键</span>。如果您收到天使投资，经过您的运营可以将A企业投给您的资金变为原来的三倍。这时您需要做出选择，是否对A企业进行返还，如果返还，请选择您返还的资金额，并点击NEXT。
+<br /><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp特别说明：您可以选择将您所拥有的任意数量的资金返还给A企业，这意味着在极端情况下您可以选择一分钱不返还，或者将您所有的钱返还。</strong>
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp为了方便您做出选择，我们给出您的个人收益计算公式：
+<br /><span style="color: red;"><h3>&nbsp;&nbsp;&nbsp;&nbsp您的收益=3×A企业给您的投资 - 您返还给A的资金</h3></span> 
+
+
+
           
-  
-          <br />
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;亲爱的参与者，感谢您参与我们的游戏，在本次游戏中您作为某B1企业的创建者（公司随机决定），现在有一家企业拥有剩余资产100亿元可用于投资本公司，若对方最终决定投资本公司D亿元【0亿元-100亿元】，
-              本公司经过一期经营可以将投资资金D亿元增值三倍变为3D亿元，增值后您决定汇报多少亿元【0亿元-3D亿元】闭区间。
-          </span>
   <el-divider></el-divider>
               <div align='center'>
   
-                  <span>对方公司投资给本公司资金</span>{{ group.sent_amount_b1 }}<br/>
-                  <span>经过您的经营,对方投资的资金为</span>{{tripled_amount}}<br/>
-                  <span>您将要汇报给您投资人的资金是</span> <br>
+                  <span>A企业投资给您的资金为</span>{{ group.sent_amount_b1 }}<br/>
+                  <span>经过您的经营,A企业投资的资金变为</span>{{tripled_amount}}<br/>
+                  <span>您将要返还给A企业的资金是</span> <br>
                   {% formfield group.sent_back_amount_b1 %}
         
               </div>
               <div style="float:right">
+<br />
+        <h4>请填写完之后点击<span style="color: red;">Next按钮</h4></span> 
                   {% next_button %}
-              </div>
+             </div>
           </el-card>
       </el-col>
      </el-row>

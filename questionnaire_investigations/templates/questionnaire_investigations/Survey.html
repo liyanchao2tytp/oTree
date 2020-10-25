@@ -6,35 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-{#    <p>请填写调查问卷</p>#}
-<div class="input-group">
-{#    <div class="input-group-prepend">#}
-{#        <span class="input-group-text">1</span>#}
-{#    </div>#}
-{#   #}
-{#    <input type="range" name="pizza" min="-2" max="2" step="1">#}
-{#    #}
-    
-    <div style="position: relative;" class="input-group-append">
-        <div style="position: absolute; top: 84px; left: -260px;"> 
-            <span>1：不在意</span>
-        </div>
-        <div style="width: 5000px; position: absolute; top: 84px; left: 280px;">
-            <span>5:很在意</span>
-        </div>
-        <div style="position: absolute; top: 174px; left: -260px;"> 
-            <span>1：不理解</span>
-        </div>
-        <div style="width: 5000px; position: absolute; top: 174px; left: 280px;">
-            <span>5:很理解</span>
-        </div>
-{#        <span class="input-group-text">6</span>#}
-{#    </div>#}
-</div>
+
        {% formfield  player.hoesty1 %}
     {% formfield  player.hoesty2 %}
      {% formfield  player.age %}

@@ -36,16 +36,42 @@
     <h1 class="display-4">投资</h1>
     <hr class="my-4" />
     <br />
-
-    <h4 style="float: left">B1在公共游戏中投入为:&nbsp;&nbsp;</h4>
+      
+    <div class="list-group chan">
+      <!-- <span>根据本企业对将要投资的两家企业的市场情况分析得到相关信息如下：<br />
+          1、B1、B2企业代表均参与了第一个团队挣钱游戏，您将可以看到B1、B2企业代表在团队挣钱游戏中的总体表现，
+B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏中的表现有关，请认真思考后做出选择。
+<br >
+      2、经过B1企业的运营，投入的资金会变为原来的3倍，经过B2企业的运营，投入的资金会变为原来的5倍，现在请您根据自己的经验决定本企业
+        将现存的100万元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。</span> -->
+      <a class="list-group-item list-group-item-action disabled">
+        <h5>根据本企业对将要投资的两家企业的市场情况分析得到相关信息如下：
+      </a>
+      <a class="list-group-item list-group-item-action">
+        1、 B1、B2企业代表均参与了第一个团队挣钱游戏，您将可以看到B1、B2企业代表在团队挣钱游戏中的总体表现，
+B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏中的表现有关，请认真思考后做出选择。
+      </a>
+      <a class="list-group-item list-group-item-action">
+        2、经过B1企业的运营，投入的资金会变为原来的<span style="color: red;">3倍 </span>，经过B2企业的运营，投入的资金会变为原来的<span style="color: red;">5倍</span>，
+现在请您根据自己的经验决定本企业
+        将现存的100万元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。</h5>
+      </a>
+      <a class="list-group-item list-group-item-action">
+       <span style="color: red;"> <h3>3.您的收益=100万-您的投资+B公司（B1或者B2）的返还额</h3> </span> 
+      </a>
+    </div>
+    <br />
+    <h4 style="float: left">B1在第一个团队挣钱游戏中总投入为:&nbsp;&nbsp;</h4>
     <h4>{{ b1_in_public }}</h4>
 
-    <h4 style="clear: left; float: left">B2在公共游戏中投入为:&nbsp;&nbsp;</h4>
+    <h4 style="clear: left; float: left">
+      B2在第一个团队挣钱游戏中总投入为:&nbsp;&nbsp;
+    </h4>
     <h4 style="float: left">{{ b2_in_public }}</h4>
 
     <br />
     <br />
-    <span>本轮您准备投资给A（或B）公司</span>
+    {# <span>本轮您准备投资给B1（或B2）企业</span>#}
     <div class="button">{% next_button %}</div>
     <div>
       <div id="b1" style="display: none">
@@ -54,6 +80,10 @@
       <div id="b2" style="display: none">
         {% formfield group.sent_amount_b2 %}
       </div>
+      <div id="b3" >
+        {% formfield group.A_expect_back_point %}
+      </div>
+
     </div>
   </div>
 </div>
@@ -92,7 +122,29 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body"><h3>请选择您要投资的对象</h3></div>
+
+      <div class="modal-body">  
+        <h3>请选择您要投资的对象</h3>
+        <br />
+        <h4 style="float: left">B1在第一个团队挣钱游戏中总投入为::&nbsp;&nbsp;</h4>
+        <h4>{{ b1_in_public }}</h4>
+
+        <h4 style="clear: left; float: left">
+          B2在第一个团队挣钱游戏中总投入为::&nbsp;&nbsp;
+        </h4>
+        <h4 style="float: left">{{ b2_in_public }}</h4>
+      </div>
+      <div class="modal-body">
+        
+        <h4>
+         &nbsp&nbsp&nbsp&nbspB1、B2企业经营者均参与了第一个团队挣钱游戏，上面展示了B1，B2公司在团队挣钱游戏中的表现，请认真观看并仔细思考。</h4>
+       <h4> 1、B1、B2企业经营者返还给您的资金可能会与其在团队挣钱游戏中的表现有关，请认真思考。
+        </h4>
+        <h4>
+           2、B1、B2企业神奇的赚钱能力不同。B1企业可将您投入资金变为原来三倍，B2企业可将您投入资金变为原来五倍。
+        </h4>
+       
+      </div>
       <div class="modal-footer">
         <button
           type="button"
@@ -140,16 +192,29 @@
     b2_default_value.value = "0";
   }
 
-   handleB2 = () => {
+  handleB2 = () => {
     b2.style.display = "block";
     b1_default_value.value = "0";
-  }; 
+  };
 
   noneIvest = () => {
     b1_default_value.value = "0";
     b2_default_value.value = "0";
 
     $(".button").find("button").click();
+  };
+
+  // 设置角色A的投资 不能超过100
+  b1_default_value.onkeyup = () => {
+    if (b1_default_value.value > 100) {
+      b1_default_value.value = 100;
+    }
+  };
+  // 设置角色A的投资 不能超过100
+  b2_default_value.onkeyup = () => {
+    if (b2_default_value.value > 100) {
+      b2_default_value.value = 100;
+    }
   };
 </script>
 {% endblock %}

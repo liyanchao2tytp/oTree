@@ -1,0 +1,44 @@
+{% extends "otree/WaitPage.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    {% if player.id_in_group == 3 %}
+        <p>
+            <span>您投资给B1企业的资金为:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>您投资给B2企业的资金为:</span>{{ group.sent_amount_b2 }}. <br>
+            <span>B1企业返还给您企业的资金额为:</span>{{ group.sent_back_amount_b1 }}.<br>
+            <span>B2企业返还给您企业的资金额为:</span>{{ group.sent_back_amount_b2 }}.
+        </p>
+    {% elif player.id_in_group == 1 %}
+         <p>
+
+            <span>A企业给您企业投资的资金为:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>A企业给B2企业投资的资金为:</span>{{ group.sent_amount_b2 }}. <br>
+            <span>您返还给A企业的资金为:</span>{{ group.sent_back_amount_b1 }}.<br>
+            {# <span>B2企业返回给A企业的资金额为:</span>{{ group.sent_back_amount_b2 }}. #}
+
+        </p>
+    {% elif player.id_in_group == 2 %}
+        <p>
+            <span>A企业给B1企业的投资额为:</span>{{ group.sent_amount_b1 }}. <br>
+            <span>A企业给您企业的投资额为:</span>{{ group.sent_amount_b2 }}. <br>
+            {# <span>B1企业返还给A企业的资金额为:</span>{{ group.sent_back_amount_b1 }}.<br> #}
+            <span>您返还给A企业的资金额为:</span>{{ group.sent_back_amount_b2 }}.
+
+
+        </p>
+    {% endif %}
+
+    <p>
+
+        最后，您获得的总筹码为：{{ player.payoff }}.
+    </p>
+
+
+{% endblock %}
+
+

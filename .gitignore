@@ -6,8 +6,12 @@ staticfiles
 *.sqlite3
 _static_root
 _bots*s
+_static*
 __temp*
 __pycache__/
 *.py[cod]
 .DS_Store
 *.otreezip
+
+nohup*
+.settings.*
