@@ -10,12 +10,15 @@
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
 
-
-        <tr><td>您本轮投入游戏币为:</td><td>{{ player.contribution }}</td></tr>
-        <tr><td>本组内的人数之和:</td><td>{{ Constants.players_per_group }}</td></tr>
-        <tr><td>本小组投入公共池的所有游戏币为:</td><td>{{ group.total_contribution }}</td></tr>
-        <tr><td>本轮游戏结束后您从公共池里获得的返还游戏币为:</td><td>{{ group.individual_share }}</td></tr>
-        <tr><td>本轮游戏结束您获得的最终收益为:</td><td>{{ player.payoff }}</td></tr>
+        <tr><td><h5>本轮游戏，您的初始资金:                     </td><td> 100</td></tr></h5>
+        <tr><td>本轮游戏，您投入的资金(X):</td><td>{{ player.contribution }}</td></tr>
+        <tr><td>团队的总人数(N):</td><td>{{ Constants.players_per_group }}</td></tr>
+        <tr><td>团队所有成员投入公共池的总资金之和(G):</td><td>{{ group.total_contribution }}</td></tr>
+        <tr><td>本轮游戏结束后您从公共池里获得的返还资金((2.4*G)/N):</td><td>{{ group.individual_share }}</td></tr>
+         <tr><td><h5>本轮游戏，您的最终收益=100-X+(2.4*G)/N:</td><td>{{ player.player_payoff_now }}</td></tr></h5>  
+     {#      <tr><td>本轮游戏结束您获得的最终收益为:</td><td>{{ player.payoff }}</td></tr>#}
+        <br>
+        请认真阅读以下信息
 <!--        <tr><td>You contributed:</td><td>{{ player.contribution }}</td></tr>-->
 <!--        <tr><td>Other participants contributed:</td><td></td></tr>-->
 <!--        {% for p in player.get_others_in_group %}-->
@@ -33,15 +36,14 @@
 
 <!--        <tr><td>Thus in total you earned:</td><td>{{ player.payoff }}</td></tr>-->
 
-    </table>
+    </table>请点击<span style="color: red;">Next按钮</span >
     <p></p>
 
-    {% next_button  %}
+    {% next_button  %} 
 
 
 
 
-    {% include Constants.instructions_template %}
-
+ 
 
 {% endblock %}

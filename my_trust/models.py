@@ -54,13 +54,13 @@ class Subsession(BaseSubsession):
             p.payoff_avg_public = payoff_avg[p.participant.id_in_session]
 
         new_structure = [
-            [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-            [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-            [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-            [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-            [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-            [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-            # [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+            # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+            # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
+            # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+            # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+            # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+            # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
 
         ]
         matrix = self.set_group_matrix(new_structure)
@@ -95,19 +95,23 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     sent_amount_b1 = models.CurrencyField(
-        label='你要发给公司B1多少',
+        label='您要投资给B1企业多少资金',
     )
     sent_amount_b2 = models.CurrencyField(
-        label='你要发给公司B2多少',
+        label='您要投资给B2企业多少资金',
 
     )
 
     sent_back_amount_b1 = models.CurrencyField(
-        label='你要返回给A多少'
+        label='您要返还给A企业多少资金'
     )
     sent_back_amount_b2 = models.CurrencyField(
-        label='你要返回给A多少'
+        label='您要返还给A企业多少资金'
     )
+
+    # 角色A 期待返回的金额
+    A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
+
 
     def sent_back_amount_b1_choices(self):
         return currency_range(
