@@ -1,0 +1,52 @@
+{% extends "otree/WaitPage.html" %}
+{% load otree static %}
+
+{% block title %}
+    您好，请等待
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+
+<style>
+    @import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+</style>   
+
+<div id="app">
+    <template>
+     <el-row :gutter="10">
+      <el-col :span='25'>
+          <el-card shadow="hover">
+
+           亲爱的参与者,您的角色是B（B1或B2）企业<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二个游戏是<strong>个人投资游戏</strong>。为了赚取更多的现金，您仔细阅读下面的说明是很重要的。在游戏结束后，游戏中的资金将按照固定的比例折算成现金发放给您，
+          请您在阅读说明和做选择时认真思考，以确保您能够获得最大的收益。您不能通过快速的选择影响整个游戏过程的持续时间。
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">本轮，您最终获得现金和您的选择密切相关。</span> 
+          在开始游戏之前，会给你一些测试题，以帮助您检查是否理解说明。
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您在这个游戏中只需要做出是否返还给A的选择，您可以选择返还，也可以选择不返还。<span style="color: red;">您的收益=N*X-Y（N=3或者5）</span>X为A给您的投资，Y为您返还给A的回报
+
+
+
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请耐心等待，您的天使投资人A正在进行选择。
+<br /><tr><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需要提醒您的是，游戏轮数并不固定，由系统随机确定（最多不会超过5轮）。</span ></tr>
+          </span>
+  <el-divider></el-divider>
+
+
+          </el-card>
+      </el-col>
+     </el-row>
+    </template>
+  <script>
+      new Vue().$mount('#app')
+  </script>
+  </div>
+  
+  
+  
+  {% endblock %}

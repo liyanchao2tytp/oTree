@@ -29,9 +29,9 @@ class Constants(BaseConstants):
     num_rounds = 1
     answer_sex = [[0, "女性"], [1, "男性"]]
     answer_race = [[0, "少数民族"], [1, "汉族"]]
-    answer_economic = [[0, "不是"], [1, "是"]]
+    answer_economic = [[0, "是"], [1, "不是"]]
     answer_communist = [[0, "是"], [1, "不是"]]
-    answer_ganbu = [[0, "不是"], [1, "是"]]
+    answer_ganbu = [[0, "是"], [1, "不是"]]
     answer_aid = [[0, "没有"], [1, "有"], [2, "不方便透露"]]
     answer_work = [[0, "没有"], [1, "有"]]
     answer_experience = [[0, "没有"], [1, "有"]]

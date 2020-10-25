@@ -19,8 +19,8 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'pre_public_goods'
-    players_per_group = 3
-    num_rounds = 1
+    players_per_group = 6
+    num_rounds = 2
     instructions_template = 'pre_public_goods/instructions.html'
     endowment = c(100)
     multiplier = 0.4

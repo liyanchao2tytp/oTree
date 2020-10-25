@@ -5,8 +5,7 @@ SESSION_CONFIGS = [
         name='Test',
         display_name="Test",
         num_demo_participants=3,
-        app_sequence=['public_goods', 'my_trust',
-                      'questionnaire_investigations']
+        app_sequence=['one_questionnaire','public_goods','my_trust','questionnaire_investigations']
         #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
 ]
@@ -29,14 +28,7 @@ LANGUAGE_CODE = 'en'
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
-ROOMS = [
-    dict(
-        name='test',
-        display_name = 'test_room',
-        participant_label_file='_rooms/test.txt',
-        use_secure_urls=True
-    )
-]
+ROOMS = []
 
 
 ADMIN_USERNAME = 'admin'

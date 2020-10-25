@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = 3
 
     # 设置两次实验
-    num_rounds = 1
+    num_rounds = 3
 
     instructions_template = 'public_goods/instructions.html'
 
@@ -102,6 +102,8 @@ class Group(BaseGroup):
             playes_id.append(p.id_in_group)
 
             p.payoff = (Constants.endowment - p.contribution) + self.individual_share
+            
+            p.player_payoff_now=p.payoff
             playes_payoff.append(p.payoff)
 
             p.player_pay = p.contribution
@@ -143,9 +145,11 @@ play_demo = []
 
 class Player(BasePlayer):
     contribution = models.CurrencyField(
+
         min=0, max=Constants.endowment, doc="""The amount contributed by the player"""
     )
     # 默认用户的初始值为0
+    player_payoff_now = models.CurrencyField(initial=0)
     player_pay = models.CurrencyField(initial=0)
     ##############################
     payoff_all = models.CurrencyField(initial=0)

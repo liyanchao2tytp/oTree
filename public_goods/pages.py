@@ -17,15 +17,15 @@ class Contribute(Page):
 
     def vars_for_template(self):
         return dict(
-            round=self.round_number
-
+            round=self.round_number,
+            number=Constants.num_rounds
         )
 
 
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'
-
-    body_text = "Waiting for other participants to contribute."
+    title_text = "等待页面"
+    body_text = "请耐心等待其他玩家做出选择"
 
     def vars_for_template(self):
         #self.player.player_pay=self.player.player_pay+self.player.contribution
@@ -42,9 +42,16 @@ class Results(Page):
         # 将用户投入的钱进行保存
 
         #self.player.player_pay = self.player.contribution+self.player.player_pay
-        return dict(total_earnings=self.group.total_contribution * Constants.multiplier)
+        return dict(
+            total_earnings=self.group.total_contribution * Constants.multiplier,
+            round=self.round_number,
+            number=Constants.num_rounds
+                    )
 class Waiter2(WaitPage):
+    title_text = "等待页面"
+    body_text = "请等待其他玩家结束"
     wait_for_all_groups = True
+    
     after_all_players_arrive = "get_dmeo"
 
 page_sequence = [Contribute, ResultsWaitPage, Results,Waiter2]
