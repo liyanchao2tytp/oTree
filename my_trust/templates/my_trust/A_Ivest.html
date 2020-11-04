@@ -27,8 +27,12 @@
   }
   .button {
     float: right;
-    margin-top: 18rem;
   }
+.button>p>button{
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+}
 </style>
 
 <div class="jumbotron jumbotron-fluid">
@@ -42,7 +46,8 @@
           1、B1、B2企业代表均参与了第一个团队挣钱游戏，您将可以看到B1、B2企业代表在团队挣钱游戏中的总体表现，
 B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏中的表现有关，请认真思考后做出选择。
 <br >
-      2、经过B1企业的运营，投入的资金会变为原来的3倍，经过B2企业的运营，投入的资金会变为原来的5倍，现在请您根据自己的经验决定本企业
+      2、经过B1企业的运营，投入的资金会变为原来的<span style="color: red;">3倍 </span>，经过B2企业的运营，
+投入的资金会变为原来的<span style="color: red;">5倍</span>，现在请您根据自己的经验决定本企业
         将现存的100万元资金投资给那家（B1或B2）企业，投资多少资金，当然我们企业也可以选择不投资以备后需。</span> -->
       <a class="list-group-item list-group-item-action disabled">
         <h5>根据本企业对将要投资的两家企业的市场情况分析得到相关信息如下：
@@ -111,7 +116,7 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">
-          如果不小心关闭该窗口，请刷新后在选择
+         <span style="color: red;">如果不小心关闭该窗口，请刷新后在选择。</span> 
         </h5>
         <button
           type="button"
@@ -141,7 +146,7 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
        <h4> 1、B1、B2企业经营者返还给您的资金可能会与其在团队挣钱游戏中的表现有关，请认真思考。
         </h4>
         <h4>
-           2、B1、B2企业神奇的赚钱能力不同。B1企业可将您投入资金变为原来三倍，B2企业可将您投入资金变为原来五倍。
+           2、B1、B2企业神奇的赚钱能力不同。B1企业可将您投入资金变为原来<span style="color: red;">三倍</span> ，B2企业可将您投入资金变为原来<span style="color: red;">五倍</span>。
         </h4>
        
       </div>
@@ -177,6 +182,7 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
 </div>
 
 <script>
+  let B1_or_B2 = ""
   $(document).ready(() => {
     $("#abton").click();
   });
@@ -184,18 +190,37 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
 
   let b2 = document.getElementById("b2");
 
+
   let b1_default_value = document.getElementById("id_sent_amount_b1");
   let b2_default_value = document.getElementById("id_sent_amount_b2");
-
+  let b3_id_A_expect_back_point = document.getElementById("id_A_expect_back_point")
+  
   function handleB1() {
     b1.style.display = "block";
     b2_default_value.value = "0";
+    B1_or_B2 = "B1"
+    deal_A_expect_value()
   }
 
   handleB2 = () => {
     b2.style.display = "block";
     b1_default_value.value = "0";
+    B1_or_B2 = "B2"
+    deal_A_expect_value()
   };
+
+  deal_A_expect_value = ()=>{
+    let message = document.createElement('h3')
+    if(B1_or_B2==="B1"){
+      message.style.minWidth="1000px"
+      message.innerHTML = '您期望对方返还的资金额是多少？(在0-300间的任意整数，包括0和300)'
+      b3_id_A_expect_back_point.before(message)
+    }else if(B1_or_B2==="B2"){
+      message.style.minWidth="1000px"
+      message.innerHTML = '您期望对方返还的资金额是多少？(在0-500间的任意整数，包括0和500)'
+      b3_id_A_expect_back_point.before(message)
+    }
+  }
 
   noneIvest = () => {
     b1_default_value.value = "0";
@@ -216,5 +241,21 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
       b2_default_value.value = 100;
     }
   };
+
+  // 设置
+  b3_id_A_expect_back_point.onkeyup = () => {
+    if(B1_or_B2=='B1'){
+      if(b3_id_A_expect_back_point.value>300){
+        b3_id_A_expect_back_point.value=300;
+      }
+    }else if(B1_or_B2 == 'B2'){
+      if(b3_id_A_expect_back_point.value>500){
+        b3_id_A_expect_back_point.value=500;
+      }
+    }else{
+      alert("请选择您要投资的公司")
+      b3_id_A_expect_back_point.style.display = "none"
+    }
+  }
 </script>
 {% endblock %}

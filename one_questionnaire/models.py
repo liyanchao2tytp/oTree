@@ -8,7 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+import random
 
 author = 'Your name here'
 
@@ -23,6 +23,7 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     answer = [[1,'A'],[2,'B']]
+    
 
 
 class Subsession(BaseSubsession):
@@ -34,7 +35,6 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     constants = Constants()
     answer = constants.answer
-
     q1 = models.IntegerField(label='', choices=answer, widget=widgets.RadioSelectHorizontal)
     q2 = models.IntegerField(label='', choices=answer, widget=widgets.RadioSelectHorizontal)
     q3 = models.IntegerField(label='', choices=answer, widget=widgets.RadioSelectHorizontal)

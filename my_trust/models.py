@@ -60,10 +60,8 @@ class Subsession(BaseSubsession):
             # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
             # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
             # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
 
-            # [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
-            [id_order_player[0][0], id_order_player[4][0], id_order_player[2][0]],
-            [id_order_player[1][0], id_order_player[5][0], id_order_player[3][0]],
         ]
         matrix = self.set_group_matrix(new_structure)
         for e in self.get_groups():
@@ -88,8 +86,6 @@ class Subsession(BaseSubsession):
                     p.payoff_truth = p.payoff_avg_now + p.payoff_avg_public
                     player_four[p.participant_id] = p.payoff_truth
                     print(p)
-            for p in self.get_players():
-                pass
                     # 存入payoff。
             print("测试")
             self.session.vars["player_off"] = player_four
@@ -117,7 +113,6 @@ class Group(BaseGroup):
 
     # 角色A 期待返回的金额
     A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
-
 
     def sent_back_amount_b1_choices(self):
         return currency_range(
@@ -153,6 +148,7 @@ class Player(BasePlayer):
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
     groups_id = models.IntegerField()
+
     def role(self):
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
