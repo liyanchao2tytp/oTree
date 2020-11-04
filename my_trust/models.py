@@ -60,11 +60,15 @@ class Subsession(BaseSubsession):
             # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
             # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
             # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
 
+            # [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+            [id_order_player[0][0], id_order_player[4][0], id_order_player[2][0]],
+            [id_order_player[1][0], id_order_player[5][0], id_order_player[3][0]],
         ]
         matrix = self.set_group_matrix(new_structure)
-
+        for e in self.get_groups():
+            for g in e.get_players():
+                g.groups_id = g.group_id
         #print(id_order_player[1212][0])
     def creating_session(self):
         matrix = self.get_group_matrix()
@@ -84,6 +88,8 @@ class Subsession(BaseSubsession):
                     p.payoff_truth = p.payoff_avg_now + p.payoff_avg_public
                     player_four[p.participant_id] = p.payoff_truth
                     print(p)
+            for p in self.get_players():
+                pass
                     # 存入payoff。
             print("测试")
             self.session.vars["player_off"] = player_four
@@ -146,6 +152,7 @@ class Player(BasePlayer):
     payoff_all_now = models.CurrencyField(initial=0)
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
+    groups_id = models.IntegerField()
     def role(self):
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
