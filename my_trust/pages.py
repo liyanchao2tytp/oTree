@@ -57,7 +57,7 @@ class A_pre(Page):
 
 class A_Ivest(Page):
     form_model = 'group'
-    form_fields = ['sent_amount_b1', 'sent_amount_b2','A_expect_back_point']
+    form_fields = ['sent_amount_b1', 'sent_amount_b2','A_expect_back_point','player_a_ivest_who']
     def is_displayed(self):
         if self.player.role() == 'A':
             return True

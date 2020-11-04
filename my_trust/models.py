@@ -113,6 +113,8 @@ class Group(BaseGroup):
 
     # 角色A 期待返回的金额
     A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
+    # 判断角色A投给了谁
+    player_a_ivest_who = models.StringField(initial="都没投资",label="")
 
     def sent_back_amount_b1_choices(self):
         return currency_range(
@@ -147,6 +149,7 @@ class Player(BasePlayer):
     payoff_all_now = models.CurrencyField(initial=0)
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
+    # 判断是否为一组的标识
     groups_id = models.IntegerField()
 
     def role(self):
