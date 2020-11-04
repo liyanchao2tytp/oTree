@@ -1,3 +1,10 @@
+'''
+Author: lyc
+Date: 2020-09-25 12:56:39
+LastEditors: lyc
+LastEditTime: 2020-11-04 10:56:03
+Description: file content
+'''
 from os import environ
 
 SESSION_CONFIGS = [
@@ -5,7 +12,7 @@ SESSION_CONFIGS = [
         name='Test',
         display_name="Test",
         num_demo_participants=3,
-        app_sequence=['one_questionnaire','public_goods','my_trust','questionnaire_investigations']
+        app_sequence=['public_goods','my_trust','questionnaire_investigations']
         #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
 ]
@@ -21,8 +28,10 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'zh-hans'
 
+
+#DEBUG = False
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'

@@ -64,7 +64,9 @@ class Subsession(BaseSubsession):
 
         ]
         matrix = self.set_group_matrix(new_structure)
-
+        for e in self.get_groups():
+            for g in e.get_players():
+                g.groups_id = g.group_id
         #print(id_order_player[1212][0])
     def creating_session(self):
         matrix = self.get_group_matrix()
@@ -112,7 +114,6 @@ class Group(BaseGroup):
     # 角色A 期待返回的金额
     A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
 
-
     def sent_back_amount_b1_choices(self):
         return currency_range(
             c(0),
@@ -146,6 +147,8 @@ class Player(BasePlayer):
     payoff_all_now = models.CurrencyField(initial=0)
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
+    groups_id = models.IntegerField()
+
     def role(self):
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
