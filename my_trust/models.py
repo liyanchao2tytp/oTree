@@ -151,8 +151,18 @@ class Player(BasePlayer):
     payoff_truth = models.CurrencyField(initial=0)
     # 判断是否为一组的标识
     groups_id = models.IntegerField()
+    # 因为role在后台显示但是下载下来却没有 需要该辅助字段
+    player_role = models.StringField(initial="none")
 
     def role(self):
+        if self.id_in_group == 1:
+            self.player_role = "B1"
+        elif self.id_in_group == 2:
+            self.player_role = "B2"
+        elif self.id_in_group == 3:
+            self.player_role = "A"
+        else:
+            pass
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
     def demo(self):
