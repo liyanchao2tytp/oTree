@@ -1,0 +1,411 @@
+{% extends "global/Page.html" %} {% load otree static %} {% block title %} 
+{% endblock %} {% block content %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+></script>
+<!-- <div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">请登录</h3>
+        </div>
+        <div class="panel-body">
+            <div class="input-group input-group-lg">
+
+                <span class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="input-group input-group-lg">
+
+                <span class="input-group-addon glyphicon glyphicon-check" id="sizing-addon1"></span>
+                <input type="text" class="form-control" placeholder="password" aria-describedby="sizing-addon1">
+            </div>
+        </div>
+
+        <div class="btn-group" >
+           
+            <button type="button" class="btn btn-default">确认</button>
+          </div>
+    </div>
+    <style>
+        .glyphicon {
+            position: static;
+        }
+
+        .panel {
+
+            width: 450px;
+            height: 300px;
+        }
+
+        .panel-body {
+
+            padding: 25px 25px;
+
+        }
+
+        .page-header {
+            padding-bottom: 9px;
+            margin: 40px 0 20px;
+            border-bottom: none;
+        }
+        .btn-group{
+           padding: 20px;
+           margin-left: 350px;
+        }
+    </style> -->
+<div class="content">
+  <div class="login-wrap">
+    <form id="user_login" action="">
+      <h3>登 录</h3>
+      <input
+        class="name"
+        name=""
+        id="accountName"
+        type="text"
+        placeholder="请输入用户名"
+      />
+      <input
+        class="code"
+        name="password"
+        id="password"
+        type="password"
+        placeholder="请输入密码"
+      />
+      <div class="btn">
+        <input
+          type="button"
+          id="submit"
+          class="submit"
+          value="登录"
+          onclick="return check(this.form);"
+        />
+        <input type="reset" id="reset" class="reset" value="重置" />
+      </div>
+      <div id="CheckMsg" class="msg"></div>
+    </form>
+  </div>
+</div>
+<style>
+  .content {
+    padding: 0 auto;
+    margin: 0 auto;
+    height: 450px;
+    width: 100%;
+    background: url(../Image/Login-Img/login_bg.jpg) no-repeat center;
+    background-size: 100% 450px;
+    margin-top: 25px;
+  }
+
+  .login-wrap {
+    position: absolute;
+    width: 320px;
+    height: 300px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    right: 200px;
+    margin-top: 75px;
+    background: url("../Image/Login-Img/form_bg.png") no-repeat;
+    background-size: 100%;
+  }
+
+  .login-wrap h3 {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .name,
+  .code {
+    border: 1px solid #fff;
+    width: 230px;
+    height: 40px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    padding-left: 40px;
+  }
+
+  .btn input {
+    height: 40px;
+    width: 120px;
+    float: left;
+    margin-right: 25px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  input:active {
+    border-color: #147a62;
+  }
+
+  .submit {
+    background: #ea8c37;
+    margin-left: 25px;
+  }
+
+  .reset {
+    background: #bbb;
+  }
+
+  .msg {
+    color: #ea8c37;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-top: 10px;
+    margin-top: 40px;
+    clear: both;
+    font-weight: bold;
+  }
+
+  .page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: none;
+  }
+
+  .login-wrap {
+    border: 1px solid white;
+  }
+
+  .submit {
+    margin-left: 40px;
+  }
+
+  .reset {
+    margin-left: 40px;
+  }
+</style>
+<script>
+  function check(form) {
+    var accountName = $("#accountName"),
+      $password = $("#password");
+    var accountName = accountName.val(),
+      password = $password.val();
+    if (!accountName || accountName == "") {
+      showMsg("请输入用户名");
+      form.accountName.focus();
+      return false;
+    }
+    if (!password || password == "") {
+      showMsg("请输入密码");
+      form.password.focus();
+      return false;
+    }
+
+    $.ajax({
+      url: "./usrList.json", // 获取自己系统后台用户信息接口
+      data: { "password": password, "accountName": accountName },
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        // if (data) {
+        //   for (let obj in data.data) {
+        //     if (obj.userName == accountName && obj.passWord == password) {
+        //       setTimeout(function () {
+        //         //做延时以便显示登录状态值
+        //         showMsg("正在登录中...");
+        //         console.log(data);
+        //         window.location.href = "www.baidu.com"; //指向登录的页面地址
+        //       }, 100);
+        //     } else {
+        //       showMsg(data.message); //显示登录失败的原因
+        //       return false;
+        //     }
+        //   }
+        // }
+        console.log(data)
+      },
+      error: function (data) {
+        showMsg(data.message);
+      },
+    });
+  }
+
+  //错误信息提醒
+  function showMsg(msg) {
+    $("#CheckMsg").text(msg);
+  }
+
+  //监听回车键提交
+  $(function () {
+    document.onkeydown = keyDownSearch;
+    function keyDownSearch(e) {
+      // 兼容FF和IE和Opera
+      var theEvent = e || window.event;
+      var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+      if (code == 13) {
+        $("#submit").click(); //具体处理函数
+        return false;
+      }
+      return true;
+    }
+  });
+</script>
+<script>
+  var BACKGROUND_COLOR = "rgba(0,43,54,1)";
+  var POINT_NUM = 99;
+  var POINT_COLOR = "rgba(255,255,255,0.7)";
+  var LINE_LENGTH = 10000;
+
+  var cvs = document.createElement("canvas");
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+  cvs.style.cssText =
+    "\
+    position:fixed;\
+    top:0px;\
+    left:0px;\
+    z-index:-1;\
+    opacity:1.0;\
+    ";
+  document.body.appendChild(cvs);
+
+  var ctx = cvs.getContext("2d");
+
+  var startTime = new Date().getTime();
+
+  //随机数函数
+  function randomInt(min, max) {
+    return Math.floor((max - min + 1) * Math.random() + min);
+  }
+
+  function randomFloat(min, max) {
+    return (max - min) * Math.random() + min;
+  }
+
+  //构造点类
+  function Point() {
+    this.x = randomFloat(0, cvs.width);
+    this.y = randomFloat(0, cvs.height);
+
+    var speed = randomFloat(0.3, 1.4);
+    var angle = randomFloat(0, 2 * Math.PI);
+
+    this.dx = Math.sin(angle) * speed;
+    this.dy = Math.cos(angle) * speed;
+
+    this.r = 1.2;
+
+    this.color = POINT_COLOR;
+  }
+
+  Point.prototype.move = function () {
+    this.x += this.dx;
+    if (this.x < 0) {
+      this.x = 0;
+      this.dx = -this.dx;
+    } else if (this.x > cvs.width) {
+      this.x = cvs.width;
+      this.dx = -this.dx;
+    }
+    this.y += this.dy;
+    if (this.y < 0) {
+      this.y = 0;
+      this.dy = -this.dy;
+    } else if (this.y > cvs.height) {
+      this.y = cvs.height;
+      this.dy = -this.dy;
+    }
+  };
+
+  Point.prototype.draw = function () {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+  };
+
+  var points = [];
+
+  function initPoints(num) {
+    for (var i = 0; i < num; ++i) {
+      points.push(new Point());
+    }
+  }
+
+  var p0 = new Point(); //鼠标
+  p0.dx = p0.dy = 0;
+  var degree = 2.5;
+  document.onmousemove = function (ev) {
+    p0.x = ev.clientX;
+    p0.y = ev.clientY;
+  };
+  document.onmousedown = function (ev) {
+    degree = 5.0;
+    p0.x = ev.clientX;
+    p0.y = ev.clientY;
+  };
+  document.onmouseup = function (ev) {
+    degree = 2.5;
+    p0.x = ev.clientX;
+    p0.y = ev.clientY;
+  };
+  window.onmouseout = function () {
+    p0.x = null;
+    p0.y = null;
+  };
+
+  function drawLine(p1, p2, deg) {
+    var dx = p1.x - p2.x;
+    var dy = p1.y - p2.y;
+    var dis2 = dx * dx + dy * dy;
+    if (dis2 < 2 * LINE_LENGTH) {
+      if (dis2 > LINE_LENGTH) {
+        if (p1 === p0) {
+          p2.x += dx * 0.03;
+          p2.y += dy * 0.03;
+        } else return;
+      }
+      var t = (1.05 - dis2 / LINE_LENGTH) * 0.2 * deg;
+      ctx.strokeStyle = "rgba(255,255,255," + t + ")";
+      ctx.beginPath();
+      ctx.lineWidth = 1.5;
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    return;
+  }
+
+  //绘制每一帧
+  function drawFrame() {
+    cvs.width = window.innerWidth;
+    cvs.height = window.innerHeight;
+    ctx.fillStyle = BACKGROUND_COLOR;
+    ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+    var arr = p0.x == null ? points : [p0].concat(points);
+    for (var i = 0; i < arr.length; ++i) {
+      for (var j = i + 1; j < arr.length; ++j) {
+        drawLine(arr[i], arr[j], 1.0);
+      }
+      arr[i].draw();
+      arr[i].move();
+    }
+
+    window.requestAnimationFrame(drawFrame);
+  }
+
+  initPoints(POINT_NUM);
+  drawFrame();
+</script>
+
+{% endblock %}
