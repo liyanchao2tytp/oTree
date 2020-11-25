@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-23 16:59:21
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-25 16:38:18
+ * @LastEditTime: 2020-11-25 17:42:21
  * @Description: 由于otree的特性，所有的button按钮都会触发下一页，所以使用div仿了个button
 -->
 {% extends "global/Page.html" %} {% load otree static %} {% block title %} 登录
@@ -31,52 +31,20 @@
 
 <div class="button" style="display: none">{% next_button %}</div>
 <script>
-  const handle = () => {
-    $.get("/my_view", {}, (data) => {
-      let inName = $('input[id="userName"]').val();
-      let inWord = $('input[id="passWord"]').val();
-      let yn_login = false;
 
-      // data.user.forEach((v, i) => {
-      //   if (Object.keys(v)[0] == inName || v[Object.keys(v)[0]] == inWord) {
-      //     $(".button").find("button").click();
-      //     yn_login = true;
-      //   }
-      // });
-      // 传过来的 角色id号-1  因为是数组从0开始
-      player_number = {{ id }};
-      // 获取id-1对应的csv文件中的账号密码对象
-      const user = data.user[player_number]
-      //
-      if (inName == Object.keys(user)[0] || inWord == user[Object.keys(user)[0]]){
-        $(".button").find("button").click();
-      }else{
-        alert("账号密码不正确");
-      }
+  const handle = () => {
+    let inName = $('input[id="userName"]').val();
+    let inWord = $('input[id="passWord"]').val();
+    // 传过来的 角色id号-1  因为是数组从0开始
+    player_number = {{ id }};
+    $.post("/my_view/", {
+      player_number,
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      inName,
+      inWord
+    }, (data) => {
+      alert('用户名密码不正确')
     });
   };
-  //   $.get(
-  //     // "https://www.fastmock.site/mock/537d017195426790292fb5099a4e743e/login/login",
-  //     // "{% static 'usr.json' %}",
-  //     // "../../../usr.json",
-  //     // "/collect_static/usr.json",
-  //     // 'E:\oTree_Project\oTree//usr.json',
-  //     // "/static/usr.json",
-  //     "/my_view",
-  //     {},
-  //     (data) => {
-  //       const uname = data.user[0].uName;
-  //       const pword = data.user[0].pWord;
-
-  //       let inName = $('input[id="userName"]').val();
-  //       let inWord = $('input[id="passWord"]').val();
-  //       if (uname == inName || pword == inWord) {
-  //         $(".button").find("button").click();
-  //       } else {
-  //         alert("账号密码不正确");
-  //       }
-  //     }
-  //   );
-  // };
 </script>
 {% endblock %}
