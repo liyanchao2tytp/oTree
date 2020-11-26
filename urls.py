@@ -8,4 +8,4 @@ Description: file content
 from django.urls import path
 from otree.urls import urlpatterns
 import login
-urlpatterns.append(path('my_view/', login.pages.my_view))
+# urlpatterns.append(path('my_view/', login.pages.my_view))
