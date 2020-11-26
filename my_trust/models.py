@@ -8,7 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+import settings
 author = 'Your name here'
 
 doc = """
@@ -53,16 +53,23 @@ class Subsession(BaseSubsession):
             p.payoff_public = payoff_all_list[p.participant.id_in_session]
             p.payoff_avg_public = payoff_avg[p.participant.id_in_session]
 
-        new_structure = [
-            # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-            # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-            # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-            # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-            # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-            # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+        # new_structure = [
+        #     # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+        #     # [id_order_player[1][0]if, id_order_player[13][0], id_order_player[7][0]],
+        #     # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+        #     # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+        #     # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+        #     # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+        #      [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+        # ]
+          # 动态生成
+        new_structure = []
+        num = settings.SESSION_CONFIGS[0]['num_demo_participants']
+        for i in range(int(num / 3)):
+            new_structure.append([id_order_player[i][0], id_order_player[int(num / 3) * 2 + i][0], id_order_player[int(num / 3) + i][0]])
 
-        ]
+
+
         matrix = self.set_group_matrix(new_structure)
         for e in self.get_groups():
             for g in e.get_players():
@@ -113,6 +120,8 @@ class Group(BaseGroup):
 
     # 角色A 期待返回的金额
     A_expect_back_point = models.CurrencyField(initial=0,label='您期待对方返还的资金额是多少')
+    # 判断角色A投给了谁
+    player_a_ivest_who = models.StringField(initial="都没投资",label="")
 
     def sent_back_amount_b1_choices(self):
         return currency_range(
@@ -147,9 +156,20 @@ class Player(BasePlayer):
     payoff_all_now = models.CurrencyField(initial=0)
     payoff_avg_now = models.CurrencyField(initial=0)
     payoff_truth = models.CurrencyField(initial=0)
+    # 判断是否为一组的标识
     groups_id = models.IntegerField()
+    # 因为role在后台显示但是下载下来却没有 需要该辅助字段
+    player_role = models.StringField(initial="none")
 
     def role(self):
+        if self.id_in_group == 1:
+            self.player_role = "B1"
+        elif self.id_in_group == 2:
+            self.player_role = "B2"
+        elif self.id_in_group == 3:
+            self.player_role = "A"
+        else:
+            pass
         return {1: 'B1', 2: 'B2', 3: 'A'}[self.id_in_group]
 
     def demo(self):

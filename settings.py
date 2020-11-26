@@ -2,20 +2,43 @@
 Author: lyc
 Date: 2020-09-25 12:56:39
 LastEditors: lyc
-LastEditTime: 2020-11-04 10:56:03
+LastEditTime: 2020-11-26 13:30:46
 Description: file content
 '''
 from os import environ
+import os
+
+
 
 SESSION_CONFIGS = [
     dict(
         name='Test',
         display_name="Test",
         num_demo_participants=3,
-        app_sequence=['public_goods','my_trust','questionnaire_investigations']
-        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
+        app_sequence=['login','one_questionnaire','public_goods','my_trust','questionnaire_investigations']
+        #'login','one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
 ]
+
+ROOT_URLCONF = 'urls'
+
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+# SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
+# # Find templates in the same folder as settings.py.
+# TEMPLATE_DIRS = (
+#     os.path.join(SETTINGS_PATH, 'one_questionnaire/templates/one_questionnaire'),
+# )
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [
+#             os.path.join(PROJECT_DIR,'oTree/one_questionnaire/templates').replace('\\','/')
+#         ],
+#         'APP_DIRS':True,
+#     },
+# ]
+
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
@@ -31,6 +54,11 @@ SESSION_CONFIG_DEFAULTS = dict(
 LANGUAGE_CODE = 'zh-hans'
 
 
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'collect_static')
+STATIC_URL = '/static/'
+
+
+
 #DEBUG = False
 
 # e.g. EUR, GBP, CNY, JPY
@@ -38,7 +66,6 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = []
-
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable

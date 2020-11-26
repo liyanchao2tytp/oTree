@@ -88,7 +88,9 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
       <div id="b3" >
         {% formfield group.A_expect_back_point %}
       </div>
-
+      <div id="b4">
+        {% formfield group.player_a_ivest_who %}
+      </div>
     </div>
   </div>
 </div>
@@ -191,15 +193,18 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
   let b2 = document.getElementById("b2");
 
 
+
   let b1_default_value = document.getElementById("id_sent_amount_b1");
   let b2_default_value = document.getElementById("id_sent_amount_b2");
   let b3_id_A_expect_back_point = document.getElementById("id_A_expect_back_point")
-  
+  let a_player_ivest_who = document.getElementById("id_player_a_ivest_who")
+
   function handleB1() {
     b1.style.display = "block";
     b2_default_value.value = "0";
     B1_or_B2 = "B1"
     deal_A_expect_value()
+    a_player_ivest_who.value="B1"
   }
 
   handleB2 = () => {
@@ -207,6 +212,7 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
     b1_default_value.value = "0";
     B1_or_B2 = "B2"
     deal_A_expect_value()
+    a_player_ivest_who.value = "B2"
   };
 
   deal_A_expect_value = ()=>{
@@ -225,7 +231,7 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
   noneIvest = () => {
     b1_default_value.value = "0";
     b2_default_value.value = "0";
-
+    a_player_ivest_who.value = "none"
     $(".button").find("button").click();
   };
 
@@ -257,5 +263,9 @@ B1、B2企业经营后返还给您的资金可能会与其在团队挣钱游戏�
       b3_id_A_expect_back_point.style.display = "none"
     }
   }
+
+
+
+
 </script>
 {% endblock %}
