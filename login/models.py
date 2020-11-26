@@ -20,7 +20,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'login'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 20
 
 
 class Subsession(BaseSubsession):
@@ -32,8 +32,5 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
-
-class User(models.Model):
-    userName = models.StringField(max_length=30)
-    passWord = models.StringField(max_length=30)
+    userName = models.StringField(max_length=30,label='用户名')
+    passWord = models.StringField(max_length=30,label='密码')
