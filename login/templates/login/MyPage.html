@@ -2,36 +2,43 @@
  * @Author: lyc
  * @Date: 2020-11-23 16:59:21
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-25 17:42:21
+ * @LastEditTime: 2020-11-28 20:31:14
  -->
-{% extends "global/Page.html" %} {% load otree static %} {% block title %} 登录
-{% endblock %}
+{% extends "global/Page.html" %} {% load otree static %}
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
 {% block content %}
+<div
+  class="login"
+  style="
+    background-color: #e0e0e0;
+    height: 500px;
+    width: 850px;
+    border-radius: 100px;
+    padding-top: 100px;
+    padding-left: 220px;
+  "
+>
+  <h1 style="padding: 0 0 1.25rem 9.375rem">登录</h1>
+  {% formfield player.userName %} {% formfield player.passWord %}
 
-{% formfield player.userName %}
-
-    {% formfield player.passWord %}
-
-<div>{% next_button %}</div>
+  <div>{% next_button %}</div>
+</div>
 
 <script>
- let round = {{ round }}
+  let round = {{ round }}
 
- if(round==1){
- }else if(round<4){
-     alert('用户名密码不正确，请重新输入')
- }else{
-     $(document).ready(()=>{
-         $('button').attr("disabled",true )
-         alert(`用户名密码不正确，请等待${(round-3)*10}秒后,重新输入`)
-     })
-      setTimeout(()=>{
-         $('button').attr("disabled",false )
-      },(round-3)*1000*10)
- }
-
-
-
+  if(round==1){
+  }else if(round<4){
+      alert('用户名密码不正确，请重新输入')
+  }else{
+      $(document).ready(()=>{
+          $('button').attr("disabled",true )
+          alert(`用户名密码不正确，请等待${(round-3)*10}秒后,重新输入`)
+      })
+       setTimeout(()=>{
+          $('button').attr("disabled",false )
+       },(round-3)*1000*10)
+  }
 </script>
 {% endblock %}
