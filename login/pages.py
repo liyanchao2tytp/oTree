@@ -2,7 +2,7 @@
 Author: lyc
 Date: 2020-11-23 16:59:21
 LastEditors: lyc
-LastEditTime: 2020-11-24 17:56:59
+LastEditTime: 2020-12-15 11:40:42
 Description: file content
 '''
 from otree.api import Currency as c, currency_range
@@ -31,6 +31,30 @@ def my_view(request):
     response = HttpResponse(person_str , content_type='application/json; charset=utf-8')
     # print(person['user'])
     return response
+
+
+def accounts_login(request):
+    if request.method=='GET':
+
+        return  render(request,'login.html')
+    else:
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user= authenticate(username=username,password=password)
+        if user:
+            login(request,user)
+            print("OK................")
+            return redirect('/index')
+        else:
+            err_msg="loging error"
+            return render(request, 'login.html',{'err_msg':err_msg})
+        
+        
+def accounts_logout(request):
+    logout(request)
+    return redirect('/accounts/login')
+
+
 
 # 动态
 class MyPage(Page):
