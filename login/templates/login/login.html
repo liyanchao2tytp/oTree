@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div >
+       <form action="/checkLogin/" method="post">
+        {% csrf_token %}
+        <label for="usrname">用户名</label>
+        <input id="usrname" name="usrname" /><br />
+
+        <label for="password">密&nbsp;&nbsp;&nbsp;码</label>
+        <input type="password" name="password" />   <br />
+           <input type="hidden" id="slug" name="slug" />
+           <input type="hidden" id="play_id" name="play_id"/>
+           <input type="hidden" id="url_pre" name="url_pre" />
+           <input type="submit" value="登录" />
+           <input type="reset" value="重置" />
+    </form>
+
+</div>
+<script>
+    // 关键uri片段
+    document.getElementById("slug").value = document.location.pathname.split('/')[3]
+    // 玩家id
+    document.getElementById("play_id").value = document.location.pathname.split('/')[2]
+    // 当前网址的前半部分
+    document.getElementById("url_pre").value = document.location.origin
+    console.log(document.getElementById("url_pre").value)
+</script>
+
+</body>
+</html>

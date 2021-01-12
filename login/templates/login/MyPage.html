@@ -1,10 +1,4 @@
-<!--
- * @Author: lyc
- * @Date: 2020-11-23 16:59:21
- * @LastEditors: lyc
- * @LastEditTime: 2020-11-25 16:38:18
- * @Description: 由于otree的特性，所有的button按钮都会触发下一页，所以使用div仿了个button
--->
+
 {% extends "global/Page.html" %} {% load otree static %} {% block title %} 登录
 {% endblock %}
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -21,16 +15,48 @@
   }
 </style>
 
-<!-- <form action="/login" method="post"></form> -->
+    <script>
+/* 页面跳转
+    如果是room创建的应用 则不能这样
+    后期自动化的时候需要判断是不是room创建的 但如果是session创建的应该就不需要了
+    */
+$(document).ready(
 
-<input type="text" name="userName" id="userName" /><br /><br />
-<input type="text" name="passWord" id="passWord" /><br /><br />
-<div class="handle_write" onclick="handle()">
-  <span style="color: white"> 登录 </span>
-</div>
+    ()=>{
+        let pid = {{ id }}
+        /*
+        //  丫的 js 不能获取sessionid  还是直接全在后台 看能不能取出session吧
+        let cookie_arr = document.cookie.split(";");
+        console.log(cookie_arr);
+        //获取指定名称的cookie的值
+        let session_is_exist = false;
+        for (let i = 0; i < cookie_arr.length; i++) {
+            let temp = cookie_arr[i].split("=");
+            if (cookie_arr[0] == "sessionid"){
+                session_is_exist=true;
+                return;
+            }
 
-<div class="button" style="display: none">{% next_button %}</div>
-<script>
+        }
+        */
+
+        // 存在 校验一下 值对不对
+        $.post(
+            "/checkSession/",
+            {
+                 csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            (data) => {
+                // 值不正确 跳转到登录页面
+
+                if (data.is_login=="ERROR"){
+                    window.location.replace(`${document.location.origin}/login/${pid}/${document.location.pathname.split('/')[2]}`)
+
+                }
+            })
+        }
+)
+
   const handle = () => {
     $.get("/my_view", {}, (data) => {
       let inName = $('input[id="userName"]').val();
@@ -55,28 +81,17 @@
       }
     });
   };
-  //   $.get(
-  //     // "https://www.fastmock.site/mock/537d017195426790292fb5099a4e743e/login/login",
-  //     // "{% static 'usr.json' %}",
-  //     // "../../../usr.json",
-  //     // "/collect_static/usr.json",
-  //     // 'E:\oTree_Project\oTree//usr.json',
-  //     // "/static/usr.json",
-  //     "/my_view",
-  //     {},
-  //     (data) => {
-  //       const uname = data.user[0].uName;
-  //       const pword = data.user[0].pWord;
 
-  //       let inName = $('input[id="userName"]').val();
-  //       let inWord = $('input[id="passWord"]').val();
-  //       if (uname == inName || pword == inWord) {
-  //         $(".button").find("button").click();
-  //       } else {
-  //         alert("账号密码不正确");
-  //       }
-  //     }
-  //   );
-  // };
 </script>
+
+<!-- <form action="/login" method="post"></form> -->
+
+<input type="text" name="userName" id="userName" /><br /><br />
+<input type="text" name="passWord" id="passWord" /><br /><br />
+<div class="handle_write" onclick="handle()">
+  <span style="color: white"> 登录 </span>
+</div>
+
+<div class="button" style="display: none">{% next_button %}</div>
+
 {% endblock %}
