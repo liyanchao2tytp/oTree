@@ -32,6 +32,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
+
+
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'zh-hans'
@@ -55,8 +57,11 @@ ROOMS = []
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
+DEFAULT_MIDDLEWARE = (
+    'oTree.login.middlewares.checkMD'
+)
 DEMO_PAGE_INTRO_HTML = """ """
+
 
 SECRET_KEY = 'g^*7ma&hn*a&@d7swv!%#^6qnow4@glu1k#t=pf@pj)(l*d*jt'
 
