@@ -18,6 +18,12 @@ SESSION_CONFIGS = [
         app_sequence=['login','public_goods','my_trust','questionnaire_investigations']
         #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
+    dict(
+        name='survey',
+        display_name='survey',
+        num_demo_participants=1,
+        app_sequence=['survey', 'payment_info'],
+    ),
 ]
 
 ROOT_URLCONF = 'urls'

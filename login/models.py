@@ -40,14 +40,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     pass
-
-class User(models.Model):
-    userName = models.StringField(max_length=30)
-    passWord = models.StringField(max_length=30)
-
-class UserInfo(models.Model):
-    user=models.OneToOneField(User)
-    name=models.CharField('姓名',max_length=32)
-
-    def __str__(self):
-        return self.name
+#
+# class User(models.Model):
+#     userName = models.StringField(max_length=30)
+#     passWord = models.StringField(max_length=30)
+#
+# class UserInfo(models.Model):
+#     user=models.OneToOneField(User)
+#     name=models.CharField('姓名',max_length=32)
+#
+#     def __str__(self):
+#         return self.name

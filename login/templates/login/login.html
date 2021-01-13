@@ -26,10 +26,11 @@
     // 关键uri片段
     document.getElementById("slug").value = document.location.pathname.split('/')[3]
     // 玩家id
-    document.getElementById("play_id").value = document.location.pathname.split('/')[2]
+    //document.getElementById("play_id").value = document.location.pathname.split('/')[2]
+    document.getElementById("play_id").value = {{ id }}
     // 当前网址的前半部分
-    document.getElementById("url_pre").value = document.location.origin
-    console.log(document.getElementById("url_pre").value)
+    document.getElementById("url_pre").value = document.location.href
+    alert({{ id }})
 </script>
 
 </body>

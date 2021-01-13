@@ -2,11 +2,7 @@
 Author: lyc
 Date: 2020-11-23 16:59:21
 LastEditors: lyc
-<<<<<<< HEAD
-LastEditTime: 2021-01-12 12:20:28
-=======
 LastEditTime: 2021-01-09 21:57:46
->>>>>>> d75260f6441fb033d6b7ff82ff6bfc237175eb7a
 Description: file content
 '''
 from django.shortcuts import render,redirect
@@ -83,7 +79,8 @@ def checkLogin(request):
                 print('------------ 用户名密码存在 --------------')
                 print(num,row[0].split()[0],row[0].split()[1])
                 # 登录成功 存session
-                request.session['token'] = slug
+                request.session.set_expiry(0)
+                request.session['token'] = play_id
                 break;
             else:
                 print('------------bbb 用户名密码不存在 --------------')
@@ -91,22 +88,21 @@ def checkLogin(request):
 
 
 
-    print(usrname,password,'-',slug,'-',play_id)
-    print('{}/InitializeParticipant/{}'.format(url_pre,slug))
-    return redirect('{}/InitializeParticipant/{}'.format(url_pre,slug))
-
+    # print(usrname,password,'-',slug,'-',play_id)
+    # print('{}/InitializeParticipant/{}'.format(url_pre,slug))
+    # return redirect('{}/InitializeParticipant/{}'.format(url_pre,slug))
+    return redirect(url_pre)
 
 # 动态
 class MyPage(Page):
     form_model = 'player'
     def is_displayed(self):
-        print(self.request)
-        return True
+        return False
     def vars_for_template(self):
 
         player_number = settings.SESSION_CONFIGS[0]['num_demo_participants']
         if self.player.id%player_number == 0:
-            id = 3
+            id = player_number
         else :
             id = self.player.id%player_number
         return dict(
