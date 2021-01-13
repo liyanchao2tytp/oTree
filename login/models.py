@@ -2,7 +2,7 @@
 Author: lyc
 Date: 2020-12-15 11:27:43
 LastEditors: lyc
-LastEditTime: 2020-12-15 11:42:26
+LastEditTime: 2021-01-13 14:17:49
 Description: file content
 '''
 from otree.api import (
@@ -27,7 +27,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'login'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 20
 
 
 class Subsession(BaseSubsession):

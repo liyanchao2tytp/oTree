@@ -1,4 +1,4 @@
-{% extends "global/Page.html" %}
+ {% extends "global/Page.html" %}
 {% load otree static %}
 
 {% block title %}
@@ -7,7 +7,7 @@
     .content{
       margin: 2% auto;
       width: 80%;
-      
+
     }
   </style>
 {% block content %}
@@ -21,8 +21,8 @@
       <p>4、在开始时您会获得属于您的ID号，整个过程您的姓名由ID号代替，您的选择是匿名进行的。</p>
     </div>
     <hr class="my-4">
-    <p class="lead">知情同意声明：</p>      
-    <p class="lead" style="margin: 0 0 1% ;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果您不同意进行此次调查请点击退出按钮退出，如果您同意，请在阅读完下面介绍后<span style="color: red;">点击next</span></p> 
+    <p class="lead">知情同意声明：</p>
+    <p class="lead" style="margin: 0 0 1% ;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果您不同意进行此次调查请点击退出按钮退出，如果您同意，请在阅读完下面介绍后<span style="color: red;">点击next</span></p>
  <br>
 
     <div>
@@ -30,8 +30,8 @@
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，感谢您的参与，您的参与表示相信我们在所有内容完成后会给予您应得到的报酬，注意在游戏期间请勿与他人交谈!</p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在游戏中如果您严格地按照说明要求并认真做出选择，那么您将能实质性的增加总的收入，如果中间您选择退出游戏，
 那您将失去游戏过程中获得所有金钱，游戏共分为两大部分，具体的游戏规则将在后面一一呈现。</p>
-      
-      
+
+
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有操作结束后，所获得的资金将按照固定比例兑换成真实的现金，请您在各个部分认真阅读相关的说明，以便于您获得更多的现金。</p>
     </div>
 
@@ -39,10 +39,7 @@
       <a class="btn btn-danger btn-lg" style="margin-left:80%;" href="javascript:window.opener=null;window.open('','_self');window.close()" role="button">退出</a>
 
   </div>
-<script>
-$.('.otree-btn-next.btn.btn-primary').remove()
 
-</script>
-    
 
 {% endblock %}
+

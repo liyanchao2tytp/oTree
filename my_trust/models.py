@@ -8,7 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+import settings
 author = 'Your name here'
 
 doc = """
@@ -53,16 +53,23 @@ class Subsession(BaseSubsession):
             p.payoff_public = payoff_all_list[p.participant.id_in_session]
             p.payoff_avg_public = payoff_avg[p.participant.id_in_session]
 
-        new_structure = [
-            # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
-            # [id_order_player[1][0], id_order_player[13][0], id_order_player[7][0]],
-            # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
-            # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
-            # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
-            # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
-             [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+        # new_structure = [
+        #     # [id_order_player[0][0], id_order_player[12][0], id_order_player[6][0]],
+        #     # [id_order_player[1][0]if, id_order_player[13][0], id_order_player[7][0]],
+        #     # [id_order_player[2][0], id_order_player[14][0], id_order_player[8][0]],
+        #     # [id_order_player[3][0], id_order_player[15][0], id_order_player[9][0]],
+        #     # [id_order_player[4][0], id_order_player[16][0], id_order_player[10][0]],
+        #     # [id_order_player[5][0], id_order_player[17][0], id_order_player[11][0]],
+        #      [id_order_player[0][0], id_order_player[2][0], id_order_player[1][0]],
+        # ]
+          # 动态生成
+        new_structure = []
+        num = settings.SESSION_CONFIGS[0]['num_demo_participants']
+        for i in range(int(num / 3)):
+            new_structure.append([id_order_player[i][0], id_order_player[int(num / 3) * 2 + i][0], id_order_player[int(num / 3) + i][0]])
 
-        ]
+
+
         matrix = self.set_group_matrix(new_structure)
         for e in self.get_groups():
             for g in e.get_players():

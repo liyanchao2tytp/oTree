@@ -2,7 +2,7 @@
 Author: lyc
 Date: 2020-11-08 12:53:53
 LastEditors: lyc
-LastEditTime: 2021-01-12 12:19:44
+LastEditTime: 2021-01-13 14:17:38
 Description: file content
 '''
 from django.urls import path

@@ -1,87 +1,80 @@
-
+<!--
+ * @Author: lyc
+ * @Date: 2021-01-13 14:17:27
+ * @LastEditors: lyc
+ * @LastEditTime: 2021-01-13 14:18:29
+ * @Description: file content
+-->
 {% extends "global/Page.html" %} {% load otree static %} {% block title %} 登录
 {% endblock %}
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-{% block content %}
-<style>
-  .handle_write {
-    width: 80px;
-    height: 30px;
-    display: flex;
-    background-color: #007bff;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-  }
-</style>
 
-    <script>
-/* 页面跳转
-    如果是room创建的应用 则不能这样
-    后期自动化的时候需要判断是不是room创建的 但如果是session创建的应该就不需要了
-    */
-$(document).ready(
+<script>
+  /* 页面跳转
+      如果是room创建的应用 则不能这样
+      后期自动化的时候需要判断是不是room创建的 但如果是session创建的应该就不需要了
+      */
+  $(document).ready(
 
-    ()=>{
-        let pid = {{ id }}
-        /*
-        //  丫的 js 不能获取sessionid  还是直接全在后台 看能不能取出session吧
-        let cookie_arr = document.cookie.split(";");
-        console.log(cookie_arr);
-        //获取指定名称的cookie的值
-        let session_is_exist = false;
-        for (let i = 0; i < cookie_arr.length; i++) {
-            let temp = cookie_arr[i].split("=");
-            if (cookie_arr[0] == "sessionid"){
-                session_is_exist=true;
-                return;
-            }
+      ()=>{
+          let pid = {{ id }}
+          /*
+          //  丫的 js 不能获取sessionid  还是直接全在后台 看能不能取出session吧
+          let cookie_arr = document.cookie.split(";");
+          console.log(cookie_arr);
+          //获取指定名称的cookie的值
+          let session_is_exist = false;
+          for (let i = 0; i < cookie_arr.length; i++) {
+              let temp = cookie_arr[i].split("=");
+              if (cookie_arr[0] == "sessionid"){
+                  session_is_exist=true;
+                  return;
+              }
 
+          }
+          */
+
+          // 存在 校验一下 值对不对
+          $.post(
+              "/checkSession/",
+              {
+                   csrfmiddlewaretoken: '{{ csrf_token }}',
+              },
+              (data) => {
+                  // 值不正确 跳转到登录页面
+
+                  if (data.is_login=="ERROR"){
+                      window.location.replace(`${document.location.origin}/login/${pid}/${document.location.pathname.split('/')[2]}`)
+
+                  }
+              })
+          }
+  )
+
+    const handle = () => {
+      $.get("/my_view", {}, (data) => {
+        let inName = $('input[id="userName"]').val();
+        let inWord = $('input[id="passWord"]').val();
+        let yn_login = false;
+
+        // data.user.forEach((v, i) => {
+        //   if (Object.keys(v)[0] == inName || v[Object.keys(v)[0]] == inWord) {
+        //     $(".button").find("button").click();
+        //     yn_login = true;
+        //   }
+        // });
+        // 传过来的 角色id号-1  因为是数组从0开始
+        player_number = {{ id }};
+        // 获取id-1对应的csv文件中的账号密码对象
+        const user = data.user[player_number]
+        //
+        if (inName == Object.keys(user)[0] || inWord == user[Object.keys(user)[0]]){
+          $(".button").find("button").click();
+        }else{
+          alert("账号密码不正确");
         }
-        */
-
-        // 存在 校验一下 值对不对
-        $.post(
-            "/checkSession/",
-            {
-                 csrfmiddlewaretoken: '{{ csrf_token }}',
-            },
-            (data) => {
-                // 值不正确 跳转到登录页面
-
-                if (data.is_login=="ERROR"){
-                    window.location.replace(`${document.location.origin}/login/${pid}/${document.location.pathname.split('/')[2]}`)
-
-                }
-            })
-        }
-)
-
-  const handle = () => {
-    $.get("/my_view", {}, (data) => {
-      let inName = $('input[id="userName"]').val();
-      let inWord = $('input[id="passWord"]').val();
-      let yn_login = false;
-
-      // data.user.forEach((v, i) => {
-      //   if (Object.keys(v)[0] == inName || v[Object.keys(v)[0]] == inWord) {
-      //     $(".button").find("button").click();
-      //     yn_login = true;
-      //   }
-      // });
-      // 传过来的 角色id号-1  因为是数组从0开始
-      player_number = {{ id }};
-      // 获取id-1对应的csv文件中的账号密码对象
-      const user = data.user[player_number]
-      //
-      if (inName == Object.keys(user)[0] || inWord == user[Object.keys(user)[0]]){
-        $(".button").find("button").click();
-      }else{
-        alert("账号密码不正确");
-      }
-    });
-  };
-
+      });
+    };
 </script>
 
 <!-- <form action="/login" method="post"></form> -->

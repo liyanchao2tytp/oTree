@@ -2,7 +2,7 @@
 Author: lyc
 Date: 2020-09-25 12:56:39
 LastEditors: lyc
-LastEditTime: 2020-11-24 15:08:12
+LastEditTime: 2020-11-26 13:30:46
 Description: file content
 '''
 from os import environ
@@ -15,8 +15,8 @@ SESSION_CONFIGS = [
         name='Test',
         display_name="Test",
         num_demo_participants=3,
-        app_sequence=['login','public_goods','my_trust','questionnaire_investigations']
-        #'one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
+        app_sequence=['login','one_questionnaire','public_goods','my_trust','questionnaire_investigations']
+        #'login','one_questionnaire','pre_public_goods', 'public_goods', 'my_trust','pre_public_goods',
     ),
     dict(
         name='survey',
@@ -27,6 +27,23 @@ SESSION_CONFIGS = [
 ]
 
 ROOT_URLCONF = 'urls'
+
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+# SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
+# # Find templates in the same folder as settings.py.
+# TEMPLATE_DIRS = (
+#     os.path.join(SETTINGS_PATH, 'one_questionnaire/templates/one_questionnaire'),
+# )
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [
+#             os.path.join(PROJECT_DIR,'oTree/one_questionnaire/templates').replace('\\','/')
+#         ],
+#         'APP_DIRS':True,
+#     },
+# ]
 
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -42,8 +59,6 @@ SESSION_CONFIG_DEFAULTS = dict(
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'zh-hans'
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'collect_static')
 STATIC_URL = '/static/'
